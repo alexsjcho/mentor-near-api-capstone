@@ -81,13 +81,6 @@ section:nth-child(even) {
 }
 
 /* #3 Schedule Time with Mentor */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background-color: $off_white;
-}
 
 .container {
   margin: 100px auto;
@@ -159,17 +152,6 @@ body {
   margin: 18px 0;
   padding: 5px;
   cursor: pointer;
-  &:hover {
-    background-image: linear-gradient(-222deg, #ff8494, #ffa9b7);
-    box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
-    .ei_Dot {
-      background-color: #fff;
-    }
-    .ei_Copy,
-    .ei_Title {
-      color: #fff;
-    }
-  }
 }
 
 .ei_Dot,
@@ -201,9 +183,4 @@ body {
 .dark {
   background-image: linear-gradient(-222deg, #646464, #454545);
   color: #fff;
-  .header_title,
-  .ei_Title,
-  .ce_title {
-    color: #fff;
-  }
 }
