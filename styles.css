@@ -186,3 +186,16 @@ section:nth-child(even) {
 }
 
 /* #4 Mentor's Questionaire */
+
+/* #5 Confirmation Page */
+#session-confirmation {
+  background-color: rgb(235, 170, 224);
+}
+
+#form-feedback-render {
+  background-color: greenyellow;
+}
+
+#mentor-confirmation {
+  background-color: rgb(198, 102, 102);
+}
