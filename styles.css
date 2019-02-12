@@ -42,6 +42,8 @@ section:nth-child(even) {
   background-color: #ddd;
 }
 
+/* Bootstrap Theme Default */
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -55,4 +57,22 @@ section:nth-child(even) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
+}
+
+/* #2 Mentor Profile Page */
+
+#mentor-name {
+  background-color: rgb(189, 179, 95);
+}
+
+#mentor-profile-info {
+  background-color: rgb(55, 55, 218);
+}
+
+#mentor-description {
+  background-color: orange;
+}
+
+#mentor-social-media {
+  background-color: rgb(52, 52, 97);
 }
