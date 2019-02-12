@@ -10,6 +10,10 @@ body {
   line-height: 1.5;
 }
 
+.container {
+  background-color: rgb(179, 179, 235);
+}
+
 nav,
 footer {
   padding: 1% 0;
