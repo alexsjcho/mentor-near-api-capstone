@@ -18,6 +18,15 @@ function watchChooseMentorButton() {
     e.preventDefault();
     console.log("watchChooseMentorButton works!");
     loadMentorCalendarPage();
+    watchSelectTimeButton();
+  });
+}
+
+function watchSelectTimeButton() {
+  $("#select-time-option-button").click(e => {
+    e.preventDefault();
+    console.log("watchSelectTimeButton function works!");
+    loadMentorFormPage();
   });
 }
 
@@ -169,35 +178,13 @@ function loadMentorCalendarPage() {
         </div>
       </div>
       <div class="calendar_events">
-        <p class="ce_title">Upcoming Events</p>
+      <a href="#" id="select-time-option-button">
         <div class="event_item">
           <div class="ei_Dot dot_active"></div>
           <div class="ei_Title">10:30 am</div>
-          <div class="ei_Copy">Monday briefing with the team</div>
+          <div class="ei_Copy">Choose This Mentorship Time Block</div>
         </div>
-        <div class="event_item">
-          <div class="ei_Dot"></div>
-          <div class="ei_Title">12:00 pm</div>
-          <div class="ei_Copy">Lunch for with the besties</div>
-        </div>
-        <div class="event_item">
-          <div class="ei_Dot"></div>
-          <div class="ei_Title">13:00 pm</div>
-          <div class="ei_Copy">
-            Meet with the client for final design <br />
-            @foofinder
-          </div>
-        </div>
-        <div class="event_item">
-          <div class="ei_Dot"></div>
-          <div class="ei_Title">14:30 am</div>
-          <div class="ei_Copy">Plan event night to inspire students</div>
-        </div>
-        <div class="event_item">
-          <div class="ei_Dot"></div>
-          <div class="ei_Title">15:30 am</div>
-          <div class="ei_Copy">Add some more events to the calendar</div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -218,6 +205,71 @@ function loadMentorCalendarPage() {
       <p class="col-md-1"><i class="fas fa-blog"></i></p>
     </a>
   </footer>
+
+    `
+  );
+}
+
+function loadMentorFormPage() {
+  console.log("loadMentorFormPage function works");
+  $("#new-page-renderer").empty();
+  $("#new-page-renderer").append(
+    `
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">MentorNear</a>
+</nav>
+
+<header role="banner">
+  <h1>#4 Mentor's Questionaire</h1>
+  <section role="section-instruction" class="row">
+    <div class="col-md-4 container">
+      <h3>Instructions</h3>
+      <p>
+        Fill out mentor's qualification form
+      </p>
+    </div>
+  </section>
+</header>
+
+<section role="mentor's question">
+  <div>
+    <h2>Mentor's Question</h2>
+    <p>What is your favorite color?</p>
+  </div>
+</section>
+<section role="fill out mentor's qualification form">
+  <form>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Write Your Answer</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <button type="button" class="btn btn-primary">Submit Form</button>
+  </form>
+</section>
+<footer class="row">
+  <p class="col-md-4">&copy; Alex Cho 2019</p>
+  <p class="col-md-1">
+    <a href="https://www.linkedin.com/in/alexsjcho/"
+      ><i class="fab fa-linkedin"></i
+    ></a>
+  </p>
+  <a href="https://github.com/alexsjcho">
+    <p class="col-md-1"><i class="fab fa-github"></i></p>
+  </a>
+  <a href="https://www.mraddoil.com/">
+    <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
+  </a>
+  <a href="https://www.alexsjcho.com/">
+    <p class="col-md-1"><i class="fas fa-blog"></i></p>
+  </a>
+</footer>
+
+
 
     `
   );
