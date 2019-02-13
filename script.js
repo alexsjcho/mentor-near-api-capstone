@@ -9,7 +9,6 @@ function watchFindMentorButton() {
     e.preventDefault();
     console.log("watchFindMentorButton works!");
     loadMentorProfilePage();
-    watchChooseMentorButton();
   });
 }
 
@@ -122,12 +121,23 @@ function loadMentorProfilePage() {
 }
 
 function loadMentorCalendarPage() {
-  console.log("loadMentorProfilePage function works");
+  console.log("loadMentorCalendarPage function works");
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">MentorNear</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarsExampleDefault"
+      aria-controls="navbarsExampleDefault"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
   </nav>
 
   <header role="banner">
