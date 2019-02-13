@@ -30,13 +30,15 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
     />
-    <link href="carousel.css" rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
   </head>
 
   <body>
     <!-- HTML inside "main element" will get replaced    -->
-    <main role="main">
+    <main
+      id="new-page-renderer"
+      role="this is the HTML hook to render new page"
+    >
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">MentorNear</a>
         <button
@@ -70,9 +72,14 @@
 
       <header role="banner">
         <h1>#1 MentorNear Landing Page</h1>
-        <a class="btn btn-primary btn-lg" href="#" role="button"
-          >Find Mentor Now!</a
+        <button
+          class="btn btn-primary btn-lg"
+          href="#"
+          role="start MentorNear app"
+          id="find-mentor-start-button"
         >
+          <a>Find Mentor Now!</a>
+        </button>
       </header>
       <section role="problem-description" class="row">
         <div class="col-md-4 container">
@@ -156,7 +163,6 @@
     <!-- HTML inside "main element" will get replaced    -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
