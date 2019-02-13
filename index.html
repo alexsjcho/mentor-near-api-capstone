@@ -39,54 +39,101 @@
     <main role="main">
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">MentorNear</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarsExampleDefault"
+          aria-controls="navbarsExampleDefault"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >About <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Challenges</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Product</a>
+            </li>
+          </ul>
+        </div>
       </nav>
 
       <header role="banner">
-        <h1>#5 Confirmation Page</h1>
-        <section role="section-instruction" class="row">
-          <div class="col-md-4 container">
-            <h3>Instructions</h3>
-            <p>
-              Remember to prepare questions before meeting your mentor
-            </p>
-          </div>
-        </section>
+        <h1>#1 MentorNear Landing Page</h1>
+        <a class="btn btn-primary btn-lg" href="#" role="button"
+          >Find Mentor Now!</a
+        >
       </header>
-      <section role="mentor confirmation page" id="mentor-confirmation">
-            <h2 class="mt-4" id="mentor-name">Your Mentor Details</h2>
-            <p id="mentor-description">
-              Mentor Description
-            </p>
-            <div class="row" id="mentor-social-media">
-              <p class="col-md-1">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-              </p>
-              <a href="#">
-                <p class="col-md-1"><i class="fab fa-github"></i></p>
-              </a>
-              <a href="#">
-                <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-              </a>
-              <a href="#">
-                <p class="col-md-1"><i class="fab fa-youtube"></i></p>
-              </a>
-            </div>
-          </section>
-      <section role="mentor session confirmation">
-        <h2 class="mt-4" id="session-confirmation">
-          Your Mentor Session Details
-        <p>Date</p>
-       <p>Time</p>
-       <p>Location</p>
+      <section role="problem-description" class="row">
+        <div class="col-md-4 container">
+          <h3>Problem #1</h3>
+          <p>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+            tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+            fermentum massa justo sit amet risus. Etiam porta sem malesuada
+            magna mollis euismod. Donec sed odio dui.
+          </p>
+        </div>
+        <div class="col-md-4 container">
+          <h3>Problem #2</h3>
+          <p>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+            tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+            fermentum massa justo sit amet risus. Etiam porta sem malesuada
+            magna mollis euismod. Donec sed odio dui.
+          </p>
+        </div>
+        <div class="col-md-4 container">
+          <h3>Problem #3</h3>
+          <p>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+            tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+            fermentum massa justo sit amet risus. Etiam porta sem malesuada
+            magna mollis euismod. Donec sed odio dui.
+          </p>
         </div>
       </section>
-      <section role="questionarie form answers">
-            <h2 class="mt-4" id="form-feedback-render">
-              Your Questionarie Responses
-         <div>Render Form Responses</div>
-            </div>
-          </section>
-      
+
+      <section role="solution-description" class="row">
+        <div class="col-md-4 container">
+          <h3>Solution #1</h3>
+          <p>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+            tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+            fermentum massa justo sit amet risus. Etiam porta sem malesuada
+            magna mollis euismod. Donec sed odio dui.
+          </p>
+        </div>
+        <div class="col-md-4 container">
+          <h3>Solution #2</h3>
+          <p>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+            tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+            fermentum massa justo sit amet risus. Etiam porta sem malesuada
+            magna mollis euismod. Donec sed odio dui.
+          </p>
+        </div>
+        <div class="col-md-4 container">
+          <h3>Solution #3</h3>
+          <p>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+            tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+            fermentum massa justo sit amet risus. Etiam porta sem malesuada
+            magna mollis euismod. Donec sed odio dui.
+          </p>
+        </div>
+      </section>
+
       <footer class="row">
         <p class="col-md-4">&copy; Alex Cho 2019</p>
         <p class="col-md-1">
@@ -95,16 +142,17 @@
           ></a>
         </p>
         <a href="https://github.com/alexsjcho">
-          <p class="col-md-1"><i class="fab fa-github"></i></p>
-        </a>
+          <p class="col-md-1"><i class="fab fa-github"></i></p
+        ></a>
         <a href="https://www.mraddoil.com/">
-          <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-        </a>
+          <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p
+        ></a>
         <a href="https://www.alexsjcho.com/">
-          <p class="col-md-1"><i class="fas fa-blog"></i></p>
-        </a>
+          <p class="col-md-1"><i class="fas fa-blog"></i></p
+        ></a>
       </footer>
     </main>
+
     <!-- HTML inside "main element" will get replaced    -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
