@@ -2,18 +2,19 @@
 $(document).ready(function() {
   watchFindMentorButton();
 });
-//Watch "Find Mentor Button"
+//Watch Button to Load New HTML Page
 
 function watchFindMentorButton() {
   $("#find-mentor-start-button").click(e => {
     e.preventDefault();
     console.log("watchFindMentorButton works!");
     loadMentorProfilePage();
+    watchChooseMentorButton();
   });
 }
 
 function watchChooseMentorButton() {
-  $("#new-page-render").on("click", "#choose-mentor-start-button", e => {
+  $("#choose-mentor-button").click(e => {
     e.preventDefault();
     console.log("watchChooseMentorButton works!");
     loadMentorCalendarPage();
@@ -80,7 +81,7 @@ function loadMentorProfilePage() {
                                     class="btn btn-primary btn-lg"
                                     href="#"
                                     role="load-mentor-calendar-page"
-                                    id="choose-mentor-start-button"
+                                    id="choose-mentor-button"
                                   >
                                     Choose This Mentor
                                   </a>
