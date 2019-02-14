@@ -78,11 +78,16 @@ function loadMentorProfilePage() {
   </section>
 </header>
 
-<!-- Random Name Generator API Generated HTML Elements -->
-<section
-  role="mentor-profile-slider"
-  id="random-name-generator-api-section"
-></section>
+<!-- Random Quote Generator -->
+<section role="motivational-quotes" id="random-quote-generator-api-section">
+  <h2>Random Quote Generator</h2>
+</section>
+
+<!-- Random Profile Generator API Generated HTML Elements -->
+<h2>Random Profile Generator</h2>
+<section role="mentor-profile-slider" id="random-profile-generator-api-section">
+</section>
+
 
 <div>
         <a
@@ -314,8 +319,8 @@ function loadConfirmationPage() {
 //Display API GET Request Results
 function displayRandomUserGeneratorResults(responseJson) {
   console.log("displayRandomUserGeneratorResults function works!");
-  $("#random-name-generator-api-section").empty();
-  $("random-name-generator-api-section").append(
+  $("#random-profile-generator-api-section").empty();
+  $("random-profile-generator-api-section").append(
     `
   <div data-ride="carousel">
   <div class="carousel-inner">
