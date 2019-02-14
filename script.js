@@ -349,41 +349,40 @@ function loadConfirmationPage() {
 function displayRandomUserGeneratorResults(responseJson) {
   console.log("displayRandomUserGeneratorResults function works!");
   $("#random-name-generator-api-section").empty();
-  for (let i = 0; i < responseJson.results.length; i++) {
-    $("random-name-generator-api-section").append(
-      `
+  $("random-name-generator-api-section").append(
+    `
   <div data-ride="carousel">
   <div class="carousel-inner">
       <div class="carousel-item actsive text-center">
           <img id="mentor-profile-img" src="${
-            results.picture.medium
+            responseJson.picture.medium
           }" alt="mentor-profile-picture-placeholder"
               height="300" width="300" />
           <div class="container" id="mentor-profile-info">
               <div id="mentor-name">
-                  <h2>${results.name.first} ${results.name.last}</h2>
+                  <h2>${responseJson.name.first} ${responseJson.name.last}</h2>
               </div>
               <div id="mentor-description">
                   <p>
-                      ${results.email}
+                      ${responseJson.email}
                   </p>
                   <p>
-                      ${results.cell}
+                      ${responseJson.cell}
                   </p>
                   <p>
-                      ${results.timezone.offset}
+                      ${responseJson.timezone.offset}
                   </p>
                   <p>
-                      ${results.timezone.description}
+                      ${responseJson.timezone.description}
                   </p>
                   <p>
-                      ${results.dob.age}
+                      ${responseJson.dob.age}
                   </p>
                   <p>
-                      ${results.location.city}
+                      ${responseJson.location.city}
                   </p>
                   <p>
-                      ${results.location.state}
+                      ${responseJson.location.state}
                   </p>
               </div>
               <div class="row" id="mentor-social-media">
@@ -405,14 +404,13 @@ function displayRandomUserGeneratorResults(responseJson) {
   </div>
 </div>
       `
-    );
-  }
+  );
 }
 
 //3rd Party API Implementations
 function useRandomUserGeneratorAPI() {
   console.log("useRandomUserGeneratorAPI function works!");
-  fetch("https://randomuser.me/api/")
+  fetch("https://randomuser.me/api/?results")
     .then(response => response.json())
     .then(responseJson => displayRandomUserGeneratorResults(responseJson))
     .catch(error => alert("Hmm... something went wrong"));
