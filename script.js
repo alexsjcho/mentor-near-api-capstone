@@ -16,6 +16,8 @@ function watchFindMentorButton() {
     loadMentorProfilePage();
     watchChooseMentorButton();
     useRandomUserGeneratorAPI();
+    displayRandomUserGeneratorResults();
+    watchNextMentorProfileButton();
   });
 }
 
@@ -45,6 +47,15 @@ function watchSubmitFormResponseButton() {
   });
 }
 
+//Watch Button for New Mentor Profile
+function watchNextMentorProfileButton() {
+  $("#next-mentor-profile-button").click(e => {
+    e.preventDefault();
+    console.log("watchNextMentorProfileButton works!");
+    displayRandomUserGeneratorResults();
+  });
+}
+
 //Render jQuery HTML Elements
 function loadMentorProfilePage() {
   console.log("loadMentorProfilePage function works");
@@ -52,95 +63,44 @@ function loadMentorProfilePage() {
   $("#new-page-renderer").append(
     `
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">MentorNear</a>
-
-    </nav>
-
-    <header role="banner">
-        <h1>#2 Mentor Profile Slider</h1>
-        <section role="section-instruction" class="row">
-            <div class="col-md-4 container">
-                <h3>Instructions</h3>
-                <p>
-                   Select a professional as your mentor
-                </p>
-            </div>
-        </section>
-    </header>
-
-    <section role="mentor-profile-slider">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active text-right">
-                    <img src="https://www.argentum.org/wp-content/uploads/2018/12/blank-profile-picture-973460_6404.png"
-                        alt="mentor-profile-picture-placeholder" height="300" width="300" />
-                    <rect width="100%" height="100%" fill="#777" />
-                    <div class="container" id="mentor-profile-info">
-                        <div class="carousel-caption text-left">
-                            <div id="mentor-name">
-                                <h2>Mentor Profile #1</h2>
-                            </div>
-
-                            <p id="mentor-description">
-                                Mentor Description
-                            </p>
-
-                            <div class="row" id="mentor-social-media" >
-                                <p class="col-md-1">
-                                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                                </p>
-                                <a href="#">
-                                    <p class="col-md-1"><i class="fab fa-github"></i></p>
-                                </a>
-                                <a href="#">
-                                    <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-                                </a>
-                                <a href="#">
-                                    <p class="col-md-1"><i class="fab fa-youtube"></i></p>
-                                </a>
-                            </div>
-                            <div>
-                            
-                                    <a
-                                    class="btn btn-primary btn-lg"
-                                    href="#"
-                                    role="load-mentor-calendar-page"
-                                    id="choose-mentor-button"
-                                  >
-                                    Choose This Mentor
-                                  </a>
-                            
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="carousel-item">
-
-                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-    </section>
-    <footer class="row">
-        <p class="col-md-4">&copy; Alex Cho 2019</p>
-        <p class="col-md-1">
-            <a href="https://www.linkedin.com/in/alexsjcho/"><i class="fab fa-linkedin"></i></a>
+    <a class="navbar-brand" href="#">MentorNear</a>
+  </nav>
+  
+  <header role="banner">
+    <h1>#2 Mentor Profile Slider</h1>
+    <section role="section-instruction" class="row">
+      <div class="col-md-4 container">
+        <h3>Instructions</h3>
+        <p>
+          Select a professional as your mentor
         </p>
-        <a href="https://github.com/alexsjcho">
-            <p class="col-md-1"><i class="fab fa-github"></i></p>
-        </a>
-        <a href="https://www.mraddoil.com/">
-            <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-        </a>
-        <a href="https://www.alexsjcho.com/">
-            <p class="col-md-1"><i class="fas fa-blog"></i></p>
-        </a>
-    </footer>
+      </div>
+    </section>
+  </header>
+  
+  <!-- Random Name Generator API Generated HTML Elements -->
+  <section
+    role="mentor-profile-slider"
+    id="random-name-generator-api-section"
+  ></section>
+  
+  <footer class="row">
+    <p class="col-md-4">&copy; Alex Cho 2019</p>
+    <p class="col-md-1">
+      <a href="https://www.linkedin.com/in/alexsjcho/"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+    </p>
+    <a href="https://github.com/alexsjcho">
+      <p class="col-md-1"><i class="fab fa-github"></i></p>
+    </a>
+    <a href="https://www.mraddoil.com/">
+      <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
+    </a>
+    <a href="https://www.alexsjcho.com/">
+      <p class="col-md-1"><i class="fas fa-blog"></i></p>
+    </a>
+  </footer>
     `
   );
 }
@@ -365,7 +325,80 @@ function loadConfirmationPage() {
 }
 
 //Display API GET Request Resluts
-function displayRandomUserGeneratorResults() {}
+function displayRandomUserGeneratorResults(responseJson) {
+  console.log(responseJson);
+  $("#random-name-generator-api-section").empty();
+  let randomUserProfileHtml = "";
+  responseJson.forEach(results => {
+    randomUserProfileHtml += `
+    <div data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active text-center">
+            <img id="mentor-profile-img" src="${
+              results.picture.medium
+            }" alt="mentor-profile-picture-placeholder"
+                height="300" width="300" />
+            <div class="container" id="mentor-profile-info">
+                <div id="mentor-name">
+                    <h2>${results.name.first} ${results.name.last}</h2>
+                </div>
+                <div id="mentor-description">
+                    <p>
+                        ${results.email}
+                    </p>
+                    <p>
+                        ${results.cell}
+                    </p>
+                    <p>
+                        ${results.timezone.offset}
+                    </p>
+                    <p>
+                        ${results.timezone.description}
+                    </p>
+                    <p>
+                        ${results.dob.age}
+                    </p>
+                    <p>
+                        ${results.location.city}
+                    </p>
+                    <p>
+                        ${results.location.state}
+                    </p>
+                </div>
+                <div class="row" id="mentor-social-media">
+                    <p class="col-md-1">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </p>
+                    <a href="#">
+                        <p class="col-md-1"><i class="fab fa-github"></i></p>
+                    </a>
+                    <a href="#">
+                        <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
+                    </a>
+                    <a href="#">
+                        <p class="col-md-1"><i class="fab fa-youtube"></i></p>
+                    </a>
+                </div>
+                <div>
+                    <a class="btn btn-success btn-lg" href="#" role="load-mentor-calendar-page"
+                        id="choose-mentor-button">
+                        Choose This Mentor
+                    </a>
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-sm" href="#" role="load-mentor-calendar-page"
+                        id="next-mentor-profile-button">
+                        Next Mentor
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        `;
+  });
+  $("#random-name-generator-api-section").html(randomUserProfileHtml);
+}
 
 //3rd Party API Implementations
 function useRandomUserGeneratorAPI() {
