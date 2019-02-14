@@ -230,21 +230,21 @@ function loadMentorFormPage() {
 
 <section role="mentor's question">
   <div>
-    <h2>Mentor's Question</h2>
-    <p>What is your favorite color?</p>
-  </div>
+  <h2>Mentor's Question</h2>
+  <p>What do you want to talk about in our first meeting?</p>
+</div>
 </section>
 <section role="fill out mentor's qualification form">
-  <form>
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Write Your Answer</label>
-      <textarea
-        class="form-control"
-        id="exampleFormControlTextarea1"
-        rows="3"
-      ></textarea>
-    </div>
-    <button type="button" class="btn btn-primary"  id="submit-form-response-button">Submit Your Response</button>
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Write Your Answer</label>
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+    ></textarea>
+  </div>
+  <button type="button" class="btn btn-primary"  id="submit-form-response-button">Submit Your Response</button>
   </form>
 </section>
 <footer class="row">
