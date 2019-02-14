@@ -1,3 +1,8 @@
+window.jQuery ||
+  document.write(
+    '<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"></script>'
+  );
+
 //Call Button Functions
 $(document).ready(function() {
   watchFindMentorButton();
@@ -10,6 +15,7 @@ function watchFindMentorButton() {
     console.log("watchFindMentorButton works!");
     loadMentorProfilePage();
     watchChooseMentorButton();
+    useRandomUserGeneratorAPI();
   });
 }
 
@@ -356,4 +362,15 @@ function loadConfirmationPage() {
   </footer>
     `
   );
+}
+
+//Display API GET Request Resluts
+function displayRandomUserGeneratorResults() {}
+
+//3rd Party API Implementations
+function useRandomUserGeneratorAPI() {
+  fetch("https://randomuser.me/api/")
+    .then(response => response.json())
+    .then(responseJson => displayRandomUserGeneratorResults(responseJson))
+    .catch(error => alert("Hmm... something went wrong"));
 }
