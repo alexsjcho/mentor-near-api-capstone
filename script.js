@@ -27,6 +27,15 @@ function watchSelectTimeButton() {
     e.preventDefault();
     console.log("watchSelectTimeButton function works!");
     loadMentorFormPage();
+    watchSubmitFormResponseButton();
+  });
+}
+
+function watchSubmitFormResponseButton() {
+  $("#submit-form-response-button").click(e => {
+    e.preventDefault();
+    console.log("watchSubmitFormResponseButton function works!");
+    loadConfirmationPage();
   });
 }
 
@@ -248,7 +257,7 @@ function loadMentorFormPage() {
         rows="3"
       ></textarea>
     </div>
-    <button type="button" class="btn btn-primary">Submit Form</button>
+    <button type="button" class="btn btn-primary"  id="submit-form-response-button">Submit Your Response</button>
   </form>
 </section>
 <footer class="row">
@@ -269,8 +278,82 @@ function loadMentorFormPage() {
   </a>
 </footer>
 
+    `
+  );
+}
 
+function loadConfirmationPage() {
+  console.log("loadConfirmationPage function works");
+  $("#new-page-renderer").empty();
+  $("#new-page-renderer").append(
+    `
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">MentorNear</a>
+  </nav>
 
+  <header role="banner">
+    <h1>#5 Confirmation Page</h1>
+    <section role="section-instruction" class="row">
+      <div class="col-md-4 container">
+        <h3>Instructions</h3>
+        <p>
+          Remember to prepare questions before meeting your mentor
+        </p>
+      </div>
+    </section>
+  </header>
+  <section role="mentor confirmation page" id="mentor-confirmation">
+        <h2 class="mt-4" id="mentor-name">Your Mentor Details</h2>
+        <p id="mentor-description">
+          Mentor Description
+        </p>
+        <div class="row" id="mentor-social-media">
+          <p class="col-md-1">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </p>
+          <a href="#">
+            <p class="col-md-1"><i class="fab fa-github"></i></p>
+          </a>
+          <a href="#">
+            <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
+          </a>
+          <a href="#">
+            <p class="col-md-1"><i class="fab fa-youtube"></i></p>
+          </a>
+        </div>
+      </section>
+  <section role="mentor session confirmation">
+    <h2 class="mt-4" id="session-confirmation">
+      Your Mentor Session Details
+    <p>Date</p>
+   <p>Time</p>
+   <p>Location</p>
+    </div>
+  </section>
+  <section role="questionarie form answers">
+        <h2 class="mt-4" id="form-feedback-render">
+          Your Questionarie Responses
+     <div>Render Form Responses</div>
+        </div>
+      </section>
+  
+  <footer class="row">
+    <p class="col-md-4">&copy; Alex Cho 2019</p>
+    <p class="col-md-1">
+      <a href="https://www.linkedin.com/in/alexsjcho/"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+    </p>
+    <a href="https://github.com/alexsjcho">
+      <p class="col-md-1"><i class="fab fa-github"></i></p>
+    </a>
+    <a href="https://www.mraddoil.com/">
+      <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
+    </a>
+    <a href="https://www.alexsjcho.com/">
+      <p class="col-md-1"><i class="fas fa-blog"></i></p>
+    </a>
+  </footer>
     `
   );
 }
