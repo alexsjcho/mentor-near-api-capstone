@@ -15,8 +15,8 @@ function watchFindMentorButton() {
     console.log("watchFindMentorButton works!");
     loadMentorProfilePage();
     watchChooseMentorButton();
-    useRandomUserGeneratorAPI();
-    displayRandomUserGeneratorResults();
+    randomUserGeneratorApi();
+    randomQuoteGeneratorApi();
     watchNextMentorProfileButton();
   });
 }
@@ -378,11 +378,40 @@ function displayRandomUserGeneratorResults(responseJson) {
   );
 }
 
+function displayRandomQuoteGeneratorResults(quoteResponseJson) {
+  console.log("displayRandomQuoteGeneratorResultsfunction works!");
+  $("#random-quote-generator-api-section").empty();
+  $("random-quote-generator-api-section").append(
+    `
+    <p>${quoteResponseJson.contents.quotes.quote}</p>
+    `
+  );
+}
+
 //3rd Party API Implementations
-function useRandomUserGeneratorAPI() {
-  console.log("useRandomUserGeneratorAPI function works!");
+
+//Random Profile Generator API
+function randomUserGeneratorApi() {
+  console.log("randomUserGeneratorApi function works!");
   fetch("https://randomuser.me/api/?results")
     .then(response => response.json())
     .then(responseJson => displayRandomUserGeneratorResults(responseJson))
-    .catch(error => alert("Hmm... something went wrong"));
+    .catch(error =>
+      alert("Hmm... we couldn't find a mentor, something went wrong")
+    );
+  displayRandomUserGeneratorResults();
+}
+
+//Random Quote Generator API
+function randomQuoteGeneratorApi() {
+  console.log("randomQuoteGeneratorApi function works!");
+  fetch("http://quotes.rest/qod")
+    .then(quoteResponse => quoteresponse.json())
+    .then(quoteResponseJson =>
+      displayRandomQuoteGeneratorResults(quoteResponseJson)
+    )
+    .catch(error =>
+      alert("Hmm... we couldn't find a random quote, something went wrong")
+    );
+  displayRandomQuoteGeneratorResults();
 }
