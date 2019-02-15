@@ -1,13 +1,12 @@
-window.jQuery ||
-  document.write(
-    '<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"></script>'
-  );
+// window.jQuery ||
+//   document.write(
+//     '<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"></script>'
+//   );
 
-//Call Button Functions
+//#1 MENTORNEAR LANDING PAGE
 $(document).ready(function() {
   watchFindMentorButton();
 });
-//Watch Button to Load New HTML Page
 
 function watchFindMentorButton() {
   $("#find-mentor-start-button").click(e => {
@@ -21,42 +20,7 @@ function watchFindMentorButton() {
   });
 }
 
-function watchChooseMentorButton() {
-  $("#choose-mentor-button").click(e => {
-    e.preventDefault();
-    console.log("watchChooseMentorButton works!");
-    loadMentorCalendarPage();
-    watchSelectTimeButton();
-  });
-}
-
-function watchSelectTimeButton() {
-  $("#select-time-option-button").click(e => {
-    e.preventDefault();
-    console.log("watchSelectTimeButton function works!");
-    loadMentorFormPage();
-    watchSubmitFormResponseButton();
-  });
-}
-
-function watchSubmitFormResponseButton() {
-  $("#submit-form-response-button").click(e => {
-    e.preventDefault();
-    console.log("watchSubmitFormResponseButton function works!");
-    loadConfirmationPage();
-  });
-}
-
-//Watch Button for New Mentor Profile
-function watchNextMentorProfileButton() {
-  $("#next-mentor-profile-button").click(e => {
-    e.preventDefault();
-    console.log("watchNextMentorProfileButton works!");
-    displayRandomUserGeneratorResults();
-  });
-}
-
-//Render jQuery HTML Elements
+//Render jQuery HTML Elements Injections
 function loadMentorProfilePage() {
   console.log("loadMentorProfilePage function works");
   $("#new-page-renderer").empty();
@@ -131,6 +95,131 @@ function loadMentorProfilePage() {
   );
 }
 
+//#2 MENTOR PROFILE SLIDER PAGE
+function watchChooseMentorButton() {
+  $("#choose-mentor-button").click(e => {
+    e.preventDefault();
+    console.log("watchChooseMentorButton works!");
+    loadMentorCalendarPage();
+    watchSelectTimeButton();
+  });
+}
+//Watch Button for New Mentor Profile
+function watchNextMentorProfileButton() {
+  $("#next-mentor-profile-button").click(e => {
+    e.preventDefault();
+    console.log("watchNextMentorProfileButton works!");
+    displayRandomUserGeneratorResults();
+  });
+}
+
+//Random User Generator API
+function randomUserGeneratorApi() {
+  console.log("randomUserGeneratorApi function works!");
+  fetch("https://randomuser.me/api/?results")
+    .then(mentorData => {
+      console.log("hello world", mentorData);
+      return mentorData.json();
+    })
+    .then(mentorDataJson => displayRandomUserGeneratorResults(mentorDataJson))
+    .catch(error =>
+      alert("Hmm... we couldn't find a mentor, something went wrong")
+    );
+}
+
+//Display Random User Generator API GET Request Results
+function displayRandomUserGeneratorResults(mentorDataJson) {
+  console.log("displayRandomUserGeneratorResults function works!");
+  $("#random-profile-generator-api-section").empty();
+  $("random-profile-generator-api-section").append(
+    `
+  <div data-ride="carousel">
+  <div class="carousel-inner">
+      <div class="carousel-item actsive text-center">
+          <img id="mentor-profile-img" src="${
+            mentorDataJson.results[0].picture.medium
+          }" alt="mentor-profile-picture-placeholder"
+              height="300" width="300" />
+          <div class="container" id="mentor-profile-info">
+              <div id="mentor-name">
+                  <h2>${mentorDataJson.results[0].name.first} ${
+      mentorDataJson.name.last
+    }</h2>
+              </div>
+              <div id="mentor-description">
+                  <p>
+                      ${mentorDataJson.results[0].email}
+                  </p>
+                  <p>
+                      ${mentorDataJson.results[0].cell}
+                  </p>
+                  <p>
+                      ${mentorDataJson.results[0].timezone.offset}
+                  </p>
+                  <p>
+                      ${mentorDataJson.results[0].timezone.description}
+                  </p>
+                  <p>
+                      ${mentorDataJson.results[0].dob.age}
+                  </p>
+                  <p>
+                      ${mentorDataJson.results[0].location.city}
+                  </p>
+                  <p>
+                      ${mentorDataJson.results[0].location.state}
+                  </p>
+              </div>
+              <div class="row" id="mentor-social-media">
+                  <p class="col-md-1">
+                      <a href="#"><i class="fab fa-linkedin"></i></a>
+                  </p>
+                  <a href="#">
+                      <p class="col-md-1"><i class="fab fa-github"></i></p>
+                  </a>
+                  <a href="#">
+                      <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
+                  </a>
+                  <a href="#">
+                      <p class="col-md-1"><i class="fab fa-youtube"></i></p>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+      `
+  );
+}
+
+//Random Quote Generator API GET Results
+function randomQuoteGeneratorApi() {
+  console.log("randomQuoteGeneratorApi function works!");
+  fetch("http://quotes.rest/qod")
+    .then(quoteResponse => {
+      console.log(quoteResponse.json);
+      quoteResponse.json();
+    })
+    .then(quoteResponseJson =>
+      displayRandomQuoteGeneratorResults(quoteResponseJson)
+    )
+    .catch(error =>
+      alert("Hmm... we couldn't find a random quote, something went wrong")
+    );
+  displayRandomQuoteGeneratorResults();
+}
+
+//Display Random Quote Generator API
+function displayRandomQuoteGeneratorResults(quoteResponseJson) {
+  console.log("displayRandomQuoteGeneratorResultsfunction works!");
+  $("#random-quote-generator-api-section").empty();
+  $("random-quote-generator-api-section").append(
+    `
+    <p>${quoteResponseJson.response.content.quotes.quote}</p>
+    `
+  );
+}
+
+//#3 FIND TIME ON MENTORS CALENDAR PAGE
 function loadMentorCalendarPage() {
   console.log("loadMentorCalendarPage function works");
   $("#new-page-renderer").empty();
@@ -211,6 +300,16 @@ function loadMentorCalendarPage() {
   );
 }
 
+function watchSelectTimeButton() {
+  $("#select-time-option-button").click(e => {
+    e.preventDefault();
+    console.log("watchSelectTimeButton function works!");
+    loadMentorFormPage();
+    watchSubmitFormResponseButton();
+  });
+}
+
+//#4 MENTOR QUESTIONAIRE FORM PAGE
 function loadMentorFormPage() {
   console.log("loadMentorFormPage function works");
   $("#new-page-renderer").empty();
@@ -273,7 +372,14 @@ function loadMentorFormPage() {
     `
   );
 }
-
+function watchSubmitFormResponseButton() {
+  $("#submit-form-response-button").click(e => {
+    e.preventDefault();
+    console.log("watchSubmitFormResponseButton function works!");
+    loadConfirmationPage();
+  });
+}
+//#5 CONFIRMATION PAGE
 function loadConfirmationPage() {
   console.log("loadConfirmationPage function works");
   $("#new-page-renderer").empty();
@@ -314,111 +420,4 @@ function loadConfirmationPage() {
 </footer>
     `
   );
-}
-
-//Display API GET Request Results
-function displayRandomUserGeneratorResults(mentorDataJson) {
-  console.log("displayRandomUserGeneratorResults function works!");
-  $("#random-profile-generator-api-section").empty();
-  $("random-profile-generator-api-section").append(
-    `
-  <div data-ride="carousel">
-  <div class="carousel-inner">
-      <div class="carousel-item actsive text-center">
-          <img id="mentor-profile-img" src="${
-            mentorDataJson.results[0].picture.medium
-          }" alt="mentor-profile-picture-placeholder"
-              height="300" width="300" />
-          <div class="container" id="mentor-profile-info">
-              <div id="mentor-name">
-                  <h2>${mentorDataJson.results[0].name.first} ${
-      mentorDataJson.name.last
-    }</h2>
-              </div>
-              <div id="mentor-description">
-                  <p>
-                      ${mentorDataJson.results[0].email}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].cell}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].timezone.offset}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].timezone.description}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].dob.age}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].location.city}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].location.state}
-                  </p>
-              </div>
-              <div class="row" id="mentor-social-media">
-                  <p class="col-md-1">
-                      <a href="#"><i class="fab fa-linkedin"></i></a>
-                  </p>
-                  <a href="#">
-                      <p class="col-md-1"><i class="fab fa-github"></i></p>
-                  </a>
-                  <a href="#">
-                      <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-                  </a>
-                  <a href="#">
-                      <p class="col-md-1"><i class="fab fa-youtube"></i></p>
-                  </a>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-      `
-  );
-}
-
-function displayRandomQuoteGeneratorResults(quoteResponseJson) {
-  console.log("displayRandomQuoteGeneratorResultsfunction works!");
-  $("#random-quote-generator-api-section").empty();
-  $("random-quote-generator-api-section").append(
-    `
-    <p>${quoteResponseJson.response.content.quotes.quote}</p>
-    `
-  );
-}
-
-//3rd Party API Implementations
-
-//Random Profile Generator API
-function randomUserGeneratorApi() {
-  console.log("randomUserGeneratorApi function works!");
-  fetch("https://randomuser.me/api/?results")
-    .then(mentorData => {
-      console.log("hello world", mentorData);
-      return mentorData.json();
-    })
-    .then(mentorDataJson => displayRandomUserGeneratorResults(mentorDataJson))
-    .catch(error =>
-      alert("Hmm... we couldn't find a mentor, something went wrong")
-    );
-}
-
-//Random Quote Generator API
-function randomQuoteGeneratorApi() {
-  console.log("randomQuoteGeneratorApi function works!");
-  fetch("http://quotes.rest/qod")
-    .then(quoteResponse => {
-      console.log(quoteResponse.json);
-      quoteResponse.json();
-    })
-    .then(quoteResponseJson =>
-      displayRandomQuoteGeneratorResults(quoteResponseJson)
-    )
-    .catch(error =>
-      alert("Hmm... we couldn't find a random quote, something went wrong")
-    );
-  displayRandomQuoteGeneratorResults();
 }
