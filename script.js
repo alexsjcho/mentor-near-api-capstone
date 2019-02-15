@@ -317,7 +317,7 @@ function loadConfirmationPage() {
 }
 
 //Display API GET Request Results
-function displayRandomUserGeneratorResults(responseJson) {
+function displayRandomUserGeneratorResults(mentorDataJson) {
   console.log("displayRandomUserGeneratorResults function works!");
   $("#random-profile-generator-api-section").empty();
   $("random-profile-generator-api-section").append(
@@ -326,36 +326,36 @@ function displayRandomUserGeneratorResults(responseJson) {
   <div class="carousel-inner">
       <div class="carousel-item actsive text-center">
           <img id="mentor-profile-img" src="${
-            responseJson.results[0].picture.medium
+            mentorDataJson.results[0].picture.medium
           }" alt="mentor-profile-picture-placeholder"
               height="300" width="300" />
           <div class="container" id="mentor-profile-info">
               <div id="mentor-name">
-                  <h2>${responseJson.results[0].name.first} ${
-      responseJson.name.last
+                  <h2>${mentorDataJson.results[0].name.first} ${
+      mentorDataJson.name.last
     }</h2>
               </div>
               <div id="mentor-description">
                   <p>
-                      ${responseJson.results[0].email}
+                      ${mentorDataJson.results[0].email}
                   </p>
                   <p>
-                      ${responseJson.results[0].cell}
+                      ${mentorDataJson.results[0].cell}
                   </p>
                   <p>
-                      ${responseJson.results[0].timezone.offset}
+                      ${mentorDataJson.results[0].timezone.offset}
                   </p>
                   <p>
-                      ${responseJson.results[0].timezone.description}
+                      ${mentorDataJson.results[0].timezone.description}
                   </p>
                   <p>
-                      ${responseJson.results[0].dob.age}
+                      ${mentorDataJson.results[0].dob.age}
                   </p>
                   <p>
-                      ${responseJson.results[0].location.city}
+                      ${mentorDataJson.results[0].location.city}
                   </p>
                   <p>
-                      ${responseJson.results[0].location.state}
+                      ${mentorDataJson.results[0].location.state}
                   </p>
               </div>
               <div class="row" id="mentor-social-media">
@@ -396,10 +396,11 @@ function displayRandomQuoteGeneratorResults(quoteResponseJson) {
 function randomUserGeneratorApi() {
   console.log("randomUserGeneratorApi function works!");
   fetch("https://randomuser.me/api/?results")
-    .then(response => {
-      response.json();
+    .then(mentorData => {
+      console.log("hello world", mentorData);
+      return mentorData.json();
     })
-    .then(responseJson => displayRandomUserGeneratorResults(responseJson))
+    .then(mentorDataJson => displayRandomUserGeneratorResults(mentorDataJson))
     .catch(error =>
       alert("Hmm... we couldn't find a mentor, something went wrong")
     );
