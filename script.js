@@ -385,7 +385,7 @@ function displayRandomQuoteGeneratorResults(quoteResponseJson) {
   $("#random-quote-generator-api-section").empty();
   $("random-quote-generator-api-section").append(
     `
-    <p>${quoteResponseJson.contents.quotes.quote}</p>
+    <p>${quoteResponseJson.response.content.quotes.quote}</p>
     `
   );
 }
@@ -397,8 +397,7 @@ function randomUserGeneratorApi() {
   console.log("randomUserGeneratorApi function works!");
   fetch("https://randomuser.me/api/?results")
     .then(response => {
-      console.log(response);
-      return response.json();
+      response.json();
     })
     .then(responseJson => displayRandomUserGeneratorResults(responseJson))
     .catch(error =>
@@ -410,7 +409,10 @@ function randomUserGeneratorApi() {
 function randomQuoteGeneratorApi() {
   console.log("randomQuoteGeneratorApi function works!");
   fetch("http://quotes.rest/qod")
-    .then(quoteResponse => quoteresponse.json())
+    .then(quoteResponse => {
+      console.log(quoteResponse.json);
+      quoteResponse.json();
+    })
     .then(quoteResponseJson =>
       displayRandomQuoteGeneratorResults(quoteResponseJson)
     )
