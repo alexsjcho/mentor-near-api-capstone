@@ -326,34 +326,36 @@ function displayRandomUserGeneratorResults(responseJson) {
   <div class="carousel-inner">
       <div class="carousel-item actsive text-center">
           <img id="mentor-profile-img" src="${
-            responseJson.picture.medium
+            responseJson.results[0].picture.medium
           }" alt="mentor-profile-picture-placeholder"
               height="300" width="300" />
           <div class="container" id="mentor-profile-info">
               <div id="mentor-name">
-                  <h2>${responseJson.name.first} ${responseJson.name.last}</h2>
+                  <h2>${responseJson.results[0].name.first} ${
+      responseJson.name.last
+    }</h2>
               </div>
               <div id="mentor-description">
                   <p>
-                      ${responseJson.email}
+                      ${responseJson.results[0].email}
                   </p>
                   <p>
-                      ${responseJson.cell}
+                      ${responseJson.results[0].cell}
                   </p>
                   <p>
-                      ${responseJson.timezone.offset}
+                      ${responseJson.results[0].timezone.offset}
                   </p>
                   <p>
-                      ${responseJson.timezone.description}
+                      ${responseJson.results[0].timezone.description}
                   </p>
                   <p>
-                      ${responseJson.dob.age}
+                      ${responseJson.results[0].dob.age}
                   </p>
                   <p>
-                      ${responseJson.location.city}
+                      ${responseJson.results[0].location.city}
                   </p>
                   <p>
-                      ${responseJson.location.state}
+                      ${responseJson.results[0].location.state}
                   </p>
               </div>
               <div class="row" id="mentor-social-media">
@@ -394,12 +396,14 @@ function displayRandomQuoteGeneratorResults(quoteResponseJson) {
 function randomUserGeneratorApi() {
   console.log("randomUserGeneratorApi function works!");
   fetch("https://randomuser.me/api/?results")
-    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+      return response.json();
+    })
     .then(responseJson => displayRandomUserGeneratorResults(responseJson))
     .catch(error =>
       alert("Hmm... we couldn't find a mentor, something went wrong")
     );
-  displayRandomUserGeneratorResults();
 }
 
 //Random Quote Generator API
