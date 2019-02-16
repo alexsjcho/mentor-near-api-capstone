@@ -206,6 +206,14 @@ const randomQuoteResponseParseJson = randomQuoteResponse => {
   return randomQuoteResponse.json();
 };
 
+//Form Random Quote Text
+const getRandomQuoteText = randomQuoteData => {
+  const {
+    quote: { quote }
+  } = randomQuoteData;
+  return `${quote}`;
+};
+
 //Display Random Quote Generator API
 const displayRandomQuote = randomQuoteGeneratorApiData => {
   if (randomQuoteGeneratorApiData.contents.length > 0) {
@@ -214,7 +222,7 @@ const displayRandomQuote = randomQuoteGeneratorApiData => {
     $("#random-quote-generator-api-section").empty();
     $("random-quote-generator-api-section").append(
       `
-      <p>${randomQuoteGeneratorApiData.contents.quotes.quote}</p>
+      <p>${randomQuoteText}</p>
       `
     );
   }
