@@ -15,7 +15,7 @@ function watchFindMentorButton() {
     loadMentorProfilePage();
     watchChooseMentorButton();
     randomUserGeneratorApi();
-    randomQuoteGeneratorApi();
+    getRandomQuoteGeneratorApi();
     watchNextMentorProfileButton();
   });
 }
@@ -229,13 +229,13 @@ const displayRandomQuote = randomQuoteGeneratorApiData => {
 };
 
 //Random Quote Generator API GET Results
-const getRandomQuoteGeneratorApi = () => {
+function getRandomQuoteGeneratorApi() {
   console.log("getRandomQuoteGeneratorApi function works!");
   fetch("http://quotes.rest/qod")
     .then(checkRandomQuoteGeneratorApiStatus)
     .then(randomQuoteResponseParseJson)
     .then(displayRandomQuote);
-};
+}
 
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
 function loadMentorCalendarPage() {
