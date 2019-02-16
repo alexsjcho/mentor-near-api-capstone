@@ -191,33 +191,43 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
   );
 }
 
-//Random Quote Generator API GET Results
-function randomQuoteGeneratorApi() {
-  console.log("randomQuoteGeneratorApi function works!");
-  fetch("http://quotes.rest/qod")
-    .then(quoteResponse => {
-      console.log(quoteResponse.json);
-      quoteResponse.json();
-    })
-    .then(quoteResponseJson =>
-      displayRandomQuoteGeneratorResults(quoteResponseJson)
-    )
-    .catch(error =>
-      alert("Hmm... we couldn't find a random quote, something went wrong")
-    );
-  displayRandomQuoteGeneratorResults();
-}
+//Random Quote Generator API Variables
+const checkRandomQuoteGeneratorApiStatus = randomQuoteResponse => {
+  if (randomQuoteResponse.ok) {
+    return randomQuoteResponse;
+  } else {
+    let quoteGeneratorApiError = new Error(randomQuoteResponse.statusText);
+    quoteGeneratorApiError = randomQuoteResponse;
+    throw error;
+  }
+};
+//Takes API Data Response and converts it to JSON format
+const randomQuoteResponseParseJson = randomQuoteResponse => {
+  return randomQuoteResponse.json();
+};
 
 //Display Random Quote Generator API
-function displayRandomQuoteGeneratorResults(quoteResponseJson) {
-  console.log("displayRandomQuoteGeneratorResultsfunction works!");
-  $("#random-quote-generator-api-section").empty();
-  $("random-quote-generator-api-section").append(
-    `
-    <p>${quoteResponseJson.response.content.quotes.quote}</p>
-    `
-  );
-}
+const displayRandomQuote = randomQuoteGeneratorApiData => {
+  if (randomQuoteGeneratorApiData.contents.length > 0) {
+    const randomQuoteData = randomQuoteGeneratorApiData.contents[0];
+    const randomQuoteText = getRandomQuoteText(randomQuoteData);
+    $("#random-quote-generator-api-section").empty();
+    $("random-quote-generator-api-section").append(
+      `
+      <p>${randomQuoteGeneratorApiData.contents.quotes.quote}</p>
+      `
+    );
+  }
+};
+
+//Random Quote Generator API GET Results
+const getRandomQuoteGeneratorApi = () => {
+  console.log("getRandomQuoteGeneratorApi function works!");
+  fetch("http://quotes.rest/qod")
+    .then(checkRandomQuoteGeneratorApiStatus)
+    .then(randomQuoteResponseParseJson)
+    .then(displayRandomQuote);
+};
 
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
 function loadMentorCalendarPage() {
