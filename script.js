@@ -121,10 +121,10 @@ function randomUserGeneratorApi() {
       console.log("hello world", mentorData);
       return mentorData.json();
     })
-    .then(mentorDataJson => displayRandomUserGeneratorResults(mentorDataJson));
-  // .catch(error =>
-  //   alert("Hmm... we couldn't find a mentor, something went wrong")
-  // );
+    .then(mentorDataJson => displayRandomUserGeneratorResults(mentorDataJson))
+    .catch(error =>
+      alert("Hmm... we couldn't find a mentor, something went wrong")
+    );
 }
 
 //Display Random User Generator API GET Request Results
@@ -134,60 +134,52 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
   $("#random-profile-generator-api-section").empty();
   $("#random-profile-generator-api-section").append(
     `
-  <div data-ride="carousel">
-  <div class="carousel-inner">
-      <div class="carousel-item actsive text-center">
-          <img id="mentor-profile-img" src="${
-            mentorDataJson.results[0].picture.medium
-          }" alt="mentor-profile-picture-placeholder"
-              height="300" width="300" />
-          <div class="container" id="mentor-profile-info">
-              <div id="mentor-name">
-                  <h2>${mentorDataJson.results[0].name.first} ${
+    <div data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active text-center">
+        <img
+          id="mentor-profile-img"
+          src="${mentorDataJson.results[0].picture.large}"
+          alt="mentor-profile-picture-placeholder"
+          height="400"
+          width="400"
+        />
+        <div class="container" id="mentor-profile-info">
+          <div id="mentor-name">
+            <h2>
+              ${mentorDataJson.results[0].name.first} ${
       mentorDataJson.results[0].name.last
-    }</h2>
-              </div>
-              <div id="mentor-description">
-                  <p>
-                      ${mentorDataJson.results[0].email}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].cell}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].location.timezone.offset}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].location.timezone.description}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].dob.age}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].location.city}
-                  </p>
-                  <p>
-                      ${mentorDataJson.results[0].location.state}
-                  </p>
-              </div>
-              <div class="row" id="mentor-social-media">
-                  <p class="col-md-1">
-                      <a href="#"><i class="fab fa-linkedin"></i></a>
-                  </p>
-                  <a href="#">
-                      <p class="col-md-1"><i class="fab fa-github"></i></p>
-                  </a>
-                  <a href="#">
-                      <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-                  </a>
-                  <a href="#">
-                      <p class="col-md-1"><i class="fab fa-youtube"></i></p>
-                  </a>
-              </div>
+    }
+            </h2>
           </div>
+          <div id="mentor-description">
+            <p>
+              ${mentorDataJson.results[0].email}
+            </p>
+            <p>
+              ${mentorDataJson.results[0].cell}
+            </p>
+            <p>
+              ${mentorDataJson.results[0].location.timezone.offset}
+            </p>
+            <p>
+              ${mentorDataJson.results[0].location.timezone.description}
+            </p>
+            <p>
+              ${mentorDataJson.results[0].dob.age}
+            </p>
+            <p>
+              ${mentorDataJson.results[0].location.city}
+            </p>
+            <p>
+              ${mentorDataJson.results[0].location.state}
+            </p>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
-</div>
+  
       `
   );
 }

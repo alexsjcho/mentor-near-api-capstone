@@ -73,51 +73,40 @@
     <div class="carousel-item active text-center">
       <img
         id="mentor-profile-img"
-        src="${results.picture.medium}"
+        src="${mentorDataJson.results[0].picture.large}"
         alt="mentor-profile-picture-placeholder"
-        height="300"
-        width="300"
+        height="400"
+        width="400"
       />
       <div class="container" id="mentor-profile-info">
         <div id="mentor-name">
-          <h2>${results.name.first} ${results.name.last}</h2>
+          <h2>
+            ${mentorDataJson.results[0].name.first} ${
+            mentorDataJson.results[0].name.last }
+          </h2>
         </div>
         <div id="mentor-description">
           <p>
-            ${results.email}
+            ${mentorDataJson.results[0].email}
           </p>
           <p>
-            ${results.cell}
+            ${mentorDataJson.results[0].cell}
           </p>
           <p>
-            ${results.timezone.offset}
+            ${mentorDataJson.results[0].location.timezone.offset}
           </p>
           <p>
-            ${results.timezone.description}
+            ${mentorDataJson.results[0].location.timezone.description}
           </p>
           <p>
-            ${results.dob.age}
+            ${mentorDataJson.results[0].dob.age}
           </p>
           <p>
-            ${results.location.city}
+            ${mentorDataJson.results[0].location.city}
           </p>
           <p>
-            ${results.location.state}
+            ${mentorDataJson.results[0].location.state}
           </p>
-        </div>
-        <div class="row" id="mentor-social-media">
-          <p class="col-md-1">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-          </p>
-          <a href="#">
-            <p class="col-md-1"><i class="fab fa-github"></i></p>
-          </a>
-          <a href="#">
-            <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-          </a>
-          <a href="#">
-            <p class="col-md-1"><i class="fab fa-youtube"></i></p>
-          </a>
         </div>
       </div>
     </div>
