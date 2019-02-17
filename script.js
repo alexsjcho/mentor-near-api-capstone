@@ -227,9 +227,8 @@ function getRandomQuoteGeneratorApi() {
   fetch("http://quotes.rest/qod")
     .then(checkRandomQuoteGeneratorApiStatus)
     .then(randomQuoteResponseParseJson)
-    .then(displayRandomQuote);
-  // .catch(quoteError =>
-  //   alert("Hmm... we couldn't find a quote, something went wrong")
+    .then(displayRandomQuote)
+    .catch(quoteError => alert("Theres no random quote, try again"));
 }
 
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
