@@ -121,17 +121,17 @@ function randomUserGeneratorApi() {
       console.log("hello world", mentorData);
       return mentorData.json();
     })
-    .then(mentorDataJson => displayRandomUserGeneratorResults(mentorDataJson))
-    .catch(error =>
-      alert("Hmm... we couldn't find a mentor, something went wrong")
-    );
+    .then(mentorDataJson => displayRandomUserGeneratorResults(mentorDataJson));
+  // .catch(error =>
+  //   alert("Hmm... we couldn't find a mentor, something went wrong")
+  // );
 }
 
 //Display Random User Generator API GET Request Results
 function displayRandomUserGeneratorResults(mentorDataJson) {
   console.log("displayRandomUserGeneratorResults function works!");
   $("#random-profile-generator-api-section").empty();
-  $("random-profile-generator-api-section").append(
+  $("#random-profile-generator-api-section").append(
     `
   <div data-ride="carousel">
   <div class="carousel-inner">
@@ -143,7 +143,7 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
           <div class="container" id="mentor-profile-info">
               <div id="mentor-name">
                   <h2>${mentorDataJson.results[0].name.first} ${
-      mentorDataJson.name.last
+      mentorDataJson.results[0].name.last
     }</h2>
               </div>
               <div id="mentor-description">
@@ -235,6 +235,8 @@ function getRandomQuoteGeneratorApi() {
     .then(checkRandomQuoteGeneratorApiStatus)
     .then(randomQuoteResponseParseJson)
     .then(displayRandomQuote);
+  // .catch(quoteError =>
+  //   alert("Hmm... we couldn't find a quote, something went wrong")
 }
 
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
