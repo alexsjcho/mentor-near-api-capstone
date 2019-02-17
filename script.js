@@ -130,6 +130,7 @@ function randomUserGeneratorApi() {
 //Display Random User Generator API GET Request Results
 function displayRandomUserGeneratorResults(mentorDataJson) {
   console.log("displayRandomUserGeneratorResults function works!");
+  console.log(mentorDataJson);
   $("#random-profile-generator-api-section").empty();
   $("#random-profile-generator-api-section").append(
     `
@@ -154,10 +155,10 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
                       ${mentorDataJson.results[0].cell}
                   </p>
                   <p>
-                      ${mentorDataJson.results[0].timezone.offset}
+                      ${mentorDataJson.results[0].location.timezone.offset}
                   </p>
                   <p>
-                      ${mentorDataJson.results[0].timezone.description}
+                      ${mentorDataJson.results[0].location.timezone.description}
                   </p>
                   <p>
                       ${mentorDataJson.results[0].dob.age}
