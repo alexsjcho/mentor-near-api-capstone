@@ -109,7 +109,7 @@ function watchNextMentorProfileButton() {
   $("#next-mentor-profile-button").click(e => {
     e.preventDefault();
     console.log("watchNextMentorProfileButton works!");
-    displayRandomUserGeneratorResults();
+    randomUserGeneratorApi();
   });
 }
 
