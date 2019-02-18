@@ -110,6 +110,7 @@ function watchNextMentorProfileButton() {
     e.preventDefault();
     console.log("watchNextMentorProfileButton works!");
     randomUserGeneratorApi();
+    getRandomQuoteGeneratorApi();
   });
 }
 
@@ -196,7 +197,8 @@ const checkRandomQuoteGeneratorApiStatus = randomQuoteResponse => {
 };
 //Takes API Data Response and converts it to JSON format
 const randomQuoteResponseParseJson = randomQuoteResponse => {
-  return randomQuoteResponse.json();
+  let randomQuoteResponseJson = randomQuoteResponse.json();
+  return randomQuoteResponseJson;
 };
 
 //Form Random Quote Text
@@ -209,21 +211,18 @@ const getRandomQuoteText = randomQuoteData => {
 
 //Display Random Quote Generator API
 const displayRandomQuote = randomQuoteGeneratorApiData => {
-  if (randomQuoteGeneratorApiData.contents.length > 0) {
-    const randomQuoteData = randomQuoteGeneratorApiData.contents[0];
-    const randomQuoteText = getRandomQuoteText(randomQuoteData);
-    $("#random-quote-generator-api-section").empty();
-    $("random-quote-generator-api-section").append(
-      `
+  const randomQuoteText = randomQuoteGeneratorApiData.contents.quotes[0].quote;
+  $("#random-quote-generator-api-section").empty();
+  $("#random-quote-generator-api-section").append(
+    `
       <p>${randomQuoteText}</p>
+    
       `
-    );
-  }
+  );
 };
 
 //Random Quote Generator API GET Results
 function getRandomQuoteGeneratorApi() {
-  console.log("getRandomQuoteGeneratorApi function works!");
   fetch("http://quotes.rest/qod")
     .then(checkRandomQuoteGeneratorApiStatus)
     .then(randomQuoteResponseParseJson)
