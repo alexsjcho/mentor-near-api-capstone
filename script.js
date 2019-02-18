@@ -48,7 +48,7 @@ function loadMentorProfilePage() {
 </section>
 
 <!-- Random Profile Generator API Generated HTML Elements -->
-<h2>Random Profile Generator</h2>
+<h2>Random Profile Generator API</h2>
 <section role="mentor-profile-slider" id="random-profile-generator-api-section">
 </section>
 
@@ -215,6 +215,7 @@ const displayRandomQuote = randomQuoteGeneratorApiData => {
   $("#random-quote-generator-api-section").empty();
   $("#random-quote-generator-api-section").append(
     `
+    <h2> Random Quote Generator API </h2>
       <p>${randomQuoteText}</p>
     
       `
@@ -279,13 +280,29 @@ function loadMentorCalendarPage() {
         </div>
       </div>
       <div class="calendar_events">
-      <a href="#" id="select-time-option-button">
+      <a href="#" class="select-time-option-button">
         <div class="event_item">
           <div class="ei_Dot dot_active"></div>
           <div class="ei_Title">10:30 am</div>
           <div class="ei_Copy">Choose This Mentorship Time Block</div>
         </div>
         </a>
+        <div class="calendar_events">
+        <a href="#" class="select-time-option-button">
+          <div class="event_item">
+            <div class="ei_Dot dot_active"></div>
+            <div class="ei_Title">2:30 pm</div>
+            <div class="ei_Copy">Choose This Mentorship Time Block</div>
+          </div>
+          </a>
+          <div class="calendar_events">
+          <a href="#" class="select-time-option-button">
+            <div class="event_item">
+              <div class="ei_Dot dot_active"></div>
+              <div class="ei_Title">5:30 pm</div>
+              <div class="ei_Copy">Choose This Mentorship Time Block</div>
+            </div>
+            </a>
       </div>
     </div>
   </section>
@@ -312,7 +329,7 @@ function loadMentorCalendarPage() {
 }
 
 function watchSelectTimeButton() {
-  $("#select-time-option-button").click(e => {
+  $(".select-time-option-button").click(e => {
     e.preventDefault();
     console.log("watchSelectTimeButton function works!");
     loadMentorFormPage();
