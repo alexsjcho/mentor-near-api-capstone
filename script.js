@@ -99,8 +99,9 @@ function loadMentorProfilePage() {
 function watchChooseMentorButton() {
   $("#choose-mentor-button").click(e => {
     e.preventDefault();
+    let mentorName = $("#mentor-name").text();
     console.log("watchChooseMentorButton works!");
-    loadMentorCalendarPage();
+    loadMentorCalendarPage(mentorName);
     watchSelectTimeButton();
   });
 }
@@ -146,13 +147,11 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
           width="400"
         />
         <div class="container" id="mentor-profile-info">
-          <div id="mentor-name">
-            <h2>
+            <h2 id="mentor-name"> 
               ${mentorDataJson.results[0].name.first} ${
       mentorDataJson.results[0].name.last
     }
             </h2>
-          </div>
           <div id="mentor-description">
             <p>
               ${mentorDataJson.results[0].email}
@@ -232,7 +231,7 @@ function getRandomQuoteGeneratorApi() {
 }
 
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
-function loadMentorCalendarPage() {
+function loadMentorCalendarPage(mentorName) {
   console.log("loadMentorCalendarPage function works");
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
@@ -267,7 +266,7 @@ function loadMentorCalendarPage() {
   <section role="find time on mentor's calendar">
     <div class="calendar dark">
       <div class="calendar_header">
-        <h1 class="header_title">Mentor's Name</h1>
+        <h1 class="header_title">${mentorName}</h1>
         <p class="header_copy">Times I'm Free</p>
       </div>
       <div class="calendar_plan">
