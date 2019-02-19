@@ -1,8 +1,3 @@
-// window.jQuery ||
-//   document.write(
-//     '<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"></script>'
-//   );
-
 //#1 MENTORNEAR LANDING PAGE
 $(document).ready(function() {
   watchFindMentorButton();
