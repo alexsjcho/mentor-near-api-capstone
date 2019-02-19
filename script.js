@@ -153,6 +153,7 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
   const fullName = captializeLetters(firstName, lastName);
   const mentorCity = captializeLetters(mentorCityData);
   const mentorState = captializeLetters(mentorStateData);
+
   $("#random-profile-generator-api-section").empty();
   $("#random-profile-generator-api-section").append(
     `
@@ -175,19 +176,19 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
           Age: ${mentorDataJson.results[0].dob.age}
          </p>
             <p>
-              ${mentorDataJson.results[0].email}
+            Email:  ${mentorDataJson.results[0].email}
             </p>
             <p>
-              ${mentorDataJson.results[0].cell}
+            Phone:  ${mentorDataJson.results[0].cell}
             </p>
             <p>
             Location: ${mentorTimeZone}
             </p>
             <p>
-              ${mentorCity}
+            City:  ${mentorCity}
             </p>
             <p>
-              ${mentorState}
+            State:  ${mentorState}
             </p>
           </div>
         </div>
