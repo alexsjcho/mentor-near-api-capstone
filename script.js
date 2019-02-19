@@ -96,13 +96,15 @@ function loadMentorProfilePage() {
 }
 
 //#2 MENTOR PROFILE SLIDER PAGE
+
+//Watch Choose Mentor Button
 function watchChooseMentorButton() {
   $("#choose-mentor-button").click(e => {
     e.preventDefault();
     let mentorName = $("#mentor-name").text();
     console.log("watchChooseMentorButton works!");
     loadMentorCalendarPage(mentorName);
-    watchSelectTimeButton();
+    watchSelectTimeButton(mentorName);
   });
 }
 //Watch Button for New Mentor Profile
@@ -129,14 +131,21 @@ function randomUserGeneratorApi() {
 //Display Random User Generator API GET Request Results
 function displayRandomUserGeneratorResults(mentorDataJson) {
   console.log("displayRandomUserGeneratorResults function works!");
-  let mentorNameData =
-    mentorDataJson.results[0].name.first +
-    " " +
-    mentorDataJson.results[0].name.last;
+  let firstName =
+    mentorDataJson.results[0].name.first.charAt(0).toUpperCase() +
+    mentorDataJson.results[0].name.first.substring(1);
+  let lastName =
+    mentorDataJson.results[0].name.last.charAt(0).toUpperCase() +
+    mentorDataJson.results[0].name.last.substring[1];
   let mentorPhoto = mentorDataJson.results[0].picture.large;
   let mentorTimeZone = mentorDataJson.results[0].location.timezone.description;
-  let mentorCity = mentorDataJson.results[0].location.city;
-  let mentorState = mentorDataJson.results[0].location.state;
+  let mentorCity =
+    mentorDataJson.results[0].location.city.charAt(0).toUpperCase() +
+    mentorDataJson.results[0].location.city.slice(1);
+  let mentorState =
+    mentorDataJson.results[0].location.state.charAt(0).toUpperCase() +
+    mentorDataJson.results[0].location.state.substring(1);
+
   $("#random-profile-generator-api-section").empty();
   $("#random-profile-generator-api-section").append(
     `
@@ -152,7 +161,7 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
         />
         <div class="container" id="mentor-profile-info">
             <h2 id="mentor-name"> 
-            ${mentorNameData}
+            ${firstName} ${lastName}
             </h2>
           <div id="mentor-description">
           <p>
@@ -165,7 +174,7 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
               ${mentorDataJson.results[0].cell}
             </p>
             <p>
-            Location:${mentorTimeZone}
+            Location: ${mentorTimeZone}
             </p>
             <p>
               ${mentorCity}
@@ -182,8 +191,6 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
       `
   );
 }
-
-//Convert to Random User Text
 
 //Random Quote Generator API Variables
 const checkRandomQuoteGeneratorApiStatus = randomQuoteResponse => {
@@ -337,6 +344,7 @@ function watchSelectTimeButton(mentorName) {
 //#4 MENTOR QUESTIONAIRE FORM PAGE
 function loadMentorFormPage(mentorName) {
   console.log("loadMentorFormPage function works");
+  console.log(mentorName);
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
