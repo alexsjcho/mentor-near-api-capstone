@@ -128,24 +128,31 @@ function randomUserGeneratorApi() {
     );
 }
 
+// //Make Letter Cases Capitalize
+function captializeLetters(word) {
+  console.log("captializeLetters function works!");
+  let wordArray = word.split(" ");
+  for (let i = 0; i < wordArray.length; i++) {
+    const currWord = wordArray[i];
+    wordArray[i] = currWord.charAt(0).toUpperCase() + currWord.substring(1);
+  }
+  return wordArray.join(" ");
+}
+
 //Display Random User Generator API GET Request Results
 function displayRandomUserGeneratorResults(mentorDataJson) {
   console.log("displayRandomUserGeneratorResults function works!");
-  let firstName =
-    mentorDataJson.results[0].name.first.charAt(0).toUpperCase() +
-    mentorDataJson.results[0].name.first.substring(1);
-  let lastName =
-    mentorDataJson.results[0].name.last.charAt(0).toUpperCase() +
-    mentorDataJson.results[0].name.last.substring[1];
-  let mentorPhoto = mentorDataJson.results[0].picture.large;
-  let mentorTimeZone = mentorDataJson.results[0].location.timezone.description;
-  let mentorCity =
-    mentorDataJson.results[0].location.city.charAt(0).toUpperCase() +
-    mentorDataJson.results[0].location.city.slice(1);
-  let mentorState =
-    mentorDataJson.results[0].location.state.charAt(0).toUpperCase() +
-    mentorDataJson.results[0].location.state.substring(1);
+  const firstName = mentorDataJson.results[0].name.first;
+  const lastName = mentorDataJson.results[0].name.last;
+  const mentorPhoto = mentorDataJson.results[0].picture.large;
+  const mentorTimeZone =
+    mentorDataJson.results[0].location.timezone.description;
+  const mentorCityData = mentorDataJson.results[0].location.city;
+  const mentorStateData = mentorDataJson.results[0].location.state;
 
+  const fullName = captializeLetters(firstName, lastName);
+  const mentorCity = captializeLetters(mentorCityData);
+  const mentorState = captializeLetters(mentorStateData);
   $("#random-profile-generator-api-section").empty();
   $("#random-profile-generator-api-section").append(
     `
@@ -161,7 +168,7 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
         />
         <div class="container" id="mentor-profile-info">
             <h2 id="mentor-name"> 
-            ${firstName} ${lastName}
+         ${fullName}
             </h2>
           <div id="mentor-description">
           <p>
@@ -241,7 +248,8 @@ function getRandomQuoteGeneratorApi() {
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
 function loadMentorCalendarPage(mentorName) {
   console.log("loadMentorCalendarPage function works");
-  let currentDate = Date().toString();
+  let currentDate = Date();
+
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
