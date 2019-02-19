@@ -119,10 +119,7 @@ function watchNextMentorProfileButton() {
 function randomUserGeneratorApi() {
   console.log("randomUserGeneratorApi function works!");
   fetch("https://randomuser.me/api/?results")
-    .then(mentorData => {
-      console.log("hello world", mentorData);
-      return mentorData.json();
-    })
+    .then(mentorData => mentorData.json())
     .then(mentorDataJson => displayRandomUserGeneratorResults(mentorDataJson))
     .catch(error =>
       alert("Hmm... we couldn't find a mentor, something went wrong")
@@ -132,7 +129,14 @@ function randomUserGeneratorApi() {
 //Display Random User Generator API GET Request Results
 function displayRandomUserGeneratorResults(mentorDataJson) {
   console.log("displayRandomUserGeneratorResults function works!");
-  console.log(mentorDataJson);
+  let mentorNameData =
+    mentorDataJson.results[0].name.first +
+    " " +
+    mentorDataJson.results[0].name.last;
+  let mentorPhoto = mentorDataJson.results[0].picture.large;
+  let mentorTimeZone = mentorDataJson.results[0].location.timezone.description;
+  let mentorCity = mentorDataJson.results[0].location.city;
+  let mentorState = mentorDataJson.results[0].location.state;
   $("#random-profile-generator-api-section").empty();
   $("#random-profile-generator-api-section").append(
     `
@@ -141,18 +145,19 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
       <div class="carousel-item active text-center">
         <img
           id="mentor-profile-img"
-          src="${mentorDataJson.results[0].picture.large}"
+          src="${mentorPhoto}"
           alt="mentor-profile-picture-placeholder"
-          height="400"
-          width="400"
+          height="250"
+          width="250"
         />
         <div class="container" id="mentor-profile-info">
             <h2 id="mentor-name"> 
-              ${mentorDataJson.results[0].name.first} ${
-      mentorDataJson.results[0].name.last
-    }
+            ${mentorNameData}
             </h2>
           <div id="mentor-description">
+          <p>
+          Age: ${mentorDataJson.results[0].dob.age}
+         </p>
             <p>
               ${mentorDataJson.results[0].email}
             </p>
@@ -160,19 +165,13 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
               ${mentorDataJson.results[0].cell}
             </p>
             <p>
-              ${mentorDataJson.results[0].location.timezone.offset}
+            Location:${mentorTimeZone}
             </p>
             <p>
-              ${mentorDataJson.results[0].location.timezone.description}
+              ${mentorCity}
             </p>
             <p>
-              ${mentorDataJson.results[0].dob.age}
-            </p>
-            <p>
-              ${mentorDataJson.results[0].location.city}
-            </p>
-            <p>
-              ${mentorDataJson.results[0].location.state}
+              ${mentorState}
             </p>
           </div>
         </div>
@@ -183,6 +182,8 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
       `
   );
 }
+
+//Convert to Random User Text
 
 //Random Quote Generator API Variables
 const checkRandomQuoteGeneratorApiStatus = randomQuoteResponse => {
@@ -273,9 +274,6 @@ function loadMentorCalendarPage(mentorName) {
         <div class="cl_plan">
           <div class="cl_title">Today</div>
           <div class="cl_copy">22nd April 2018</div>
-          <div class="cl_add">
-            <i class="fas fa-plus"></i>
-          </div>
         </div>
       </div>
       <div class="calendar_events">
@@ -327,17 +325,17 @@ function loadMentorCalendarPage(mentorName) {
   );
 }
 
-function watchSelectTimeButton() {
+function watchSelectTimeButton(mentorName) {
   $(".select-time-option-button").click(e => {
     e.preventDefault();
     console.log("watchSelectTimeButton function works!");
-    loadMentorFormPage();
+    loadMentorFormPage(mentorName);
     watchSubmitFormResponseButton();
   });
 }
 
 //#4 MENTOR QUESTIONAIRE FORM PAGE
-function loadMentorFormPage() {
+function loadMentorFormPage(mentorName) {
   console.log("loadMentorFormPage function works");
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
@@ -348,7 +346,7 @@ function loadMentorFormPage() {
 </nav>
 
 <header role="banner">
-  <h1>#4 Mentor's Questionaire</h1>
+  <h1>#4 Mentor Questionaire</h1>
   <section role="section-instruction" class="row">
     <div class="col-md-4 container">
       <h3>Instructions</h3>
@@ -361,7 +359,7 @@ function loadMentorFormPage() {
 
 <section role="mentor's question">
   <div>
-  <h2>Mentor's Question</h2>
+  <h2>${mentorName}'s Question</h2>
   <p>What do you want to talk about in our first meeting?</p>
 </div>
 </section>
