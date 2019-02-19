@@ -242,19 +242,26 @@ function getRandomQuoteGeneratorApi() {
 }
 
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
-
-//Add Hours
-function displayHours(hour) {
-  const hourNow = new Date();
-  hourNow.setHours(hourNow.getHours() + 3);
-  return hour;
-}
-
 function loadMentorCalendarPage(mentorName) {
   console.log("loadMentorCalendarPage function works");
-  const getDate = Date();
-  const getHourData = new Date();
-  const addThreeHours = displayHours(getHourData);
+  const getDateData = new Date();
+  const getHourMins = getDateData.getHours() + ":" + getDateData.getMinutes();
+  const dateTomorrow = Date.today()
+    .addDays(1)
+    .toString("dddd MMMM dS, yyyy");
+  const threeHourPlusTomorrow = Date.today()
+    .at(getHourMins)
+    .addHours(3)
+    .toString("HH:mm tt");
+  const fiveHourPlusTomorrow = Date.today(getHourMins)
+    .at(getHourMins)
+    .addHours(5)
+    .toString("HH:mm tt");
+  const sevenHourPlusTomorrow = Date.today(getHourMins)
+    .at(getHourMins)
+    .addHours(7)
+    .toString("HH:mm tt");
+
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
@@ -293,14 +300,14 @@ function loadMentorCalendarPage(mentorName) {
       </div>
       <div class="calendar_plan">
         <div class="cl_plan">
-          <div class="cl_title">${getDate}</div>
+          <div class="cl_title">${dateTomorrow}</div>
         </div>
       </div>
       <div class="calendar_events">
       <a href="#" class="select-time-option-button">
         <div class="event_item">
           <div class="ei_Dot dot_active"></div>
-          <div class="ei_Title">${addThreeHours}</div>
+          <div class="ei_Title">${threeHourPlusTomorrow}</div>
           <div class="ei_Copy">Choose This Mentorship Time Block</div>
         </div>
         </a>
@@ -308,7 +315,7 @@ function loadMentorCalendarPage(mentorName) {
         <a href="#" class="select-time-option-button">
           <div class="event_item">
             <div class="ei_Dot dot_active"></div>
-            <div class="ei_Title">2:00 pm</div>
+            <div class="ei_Title">${fiveHourPlusTomorrow}</div>
             <div class="ei_Copy">Choose This Mentorship Time Block</div>
           </div>
           </a>
@@ -316,7 +323,7 @@ function loadMentorCalendarPage(mentorName) {
           <a href="#" class="select-time-option-button">
             <div class="event_item">
               <div class="ei_Dot dot_active"></div>
-              <div class="ei_Title">5:00 pm</div>
+              <div class="ei_Title">${sevenHourPlusTomorrow}</div>
               <div class="ei_Copy">Choose This Mentorship Time Block</div>
             </div>
             </a>
