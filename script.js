@@ -241,6 +241,7 @@ function getRandomQuoteGeneratorApi() {
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
 function loadMentorCalendarPage(mentorName) {
   console.log("loadMentorCalendarPage function works");
+  let currentDate = Date().toString();
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
@@ -279,8 +280,7 @@ function loadMentorCalendarPage(mentorName) {
       </div>
       <div class="calendar_plan">
         <div class="cl_plan">
-          <div class="cl_title">Today</div>
-          <div class="cl_copy">22nd April 2018</div>
+          <div class="cl_title">${currentDate}</div>
         </div>
       </div>
       <div class="calendar_events">
