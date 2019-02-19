@@ -7,7 +7,7 @@ $(document).ready(function() {
   menuItemListener();
 });
 function menuItemListener() {
-  $("a[href*=#]").bind("click", function(e) {
+  $("a.href").bind("click", function(e) {
     e.preventDefault();
     let target = $(this).attr("href");
     $("html, body")
@@ -16,7 +16,7 @@ function menuItemListener() {
         {
           scrollTop: $(target).offset().top
         },
-        1500,
+        3000,
         function() {
           location.hash = target;
         }
@@ -27,7 +27,6 @@ function menuItemListener() {
 
 function loadMentorNearLandingPage() {
   $("#return-home-page").on("click", function() {
-    e.preventDefault();
     console.log("loadMentorNearLandingPage function works!");
     $("html").load("index.html");
   });
