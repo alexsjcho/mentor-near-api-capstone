@@ -24,13 +24,12 @@ function menuItemListener() {
   });
 }
 
-function watchFindMentorButton(dateTomorrow) {
+function watchFindMentorButton() {
   $("#find-mentor-start-button").click(e => {
     e.preventDefault();
     console.log("watchFindMentorButton works!");
-    console.log(dateTomorrow);
-    loadMentorProfilePage(dateTomorrow);
-    watchChooseMentorButton(dateTomorrow);
+    loadMentorProfilePage();
+    watchChooseMentorButton();
     randomUserGeneratorApi();
     getRandomQuoteGeneratorApi();
     watchNextMentorProfileButton();
@@ -38,9 +37,8 @@ function watchFindMentorButton(dateTomorrow) {
 }
 
 //Render jQuery HTML Elements Injections
-function loadMentorProfilePage(dateTomorrow) {
+function loadMentorProfilePage() {
   console.log("loadMentorProfilePage function works");
-  console.log(dateTomorrow);
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
@@ -116,14 +114,13 @@ function loadMentorProfilePage(dateTomorrow) {
 //#2 MENTOR PROFILE SLIDER PAGE
 
 //Watch Choose Mentor Button
-function watchChooseMentorButton(dateTomorrow, selectedTime) {
+function watchChooseMentorButton() {
   $("#choose-mentor-button").click(e => {
     e.preventDefault();
     let mentorName = $("#mentor-name").text();
     console.log("watchChooseMentorButton works!");
-    console.log(selectedTime);
-    loadMentorCalendarPage(mentorName, dateTomorrow, selectedTime);
-    watchSelectTimeButton(mentorName, dateTomorrow, selectedTime);
+    loadMentorCalendarPage(mentorName);
+    watchSelectTimeButton(mentorName);
   });
 }
 //Watch Button for New Mentor Profile
@@ -266,15 +263,13 @@ function getRandomQuoteGeneratorApi() {
 }
 
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
-function loadMentorCalendarPage(mentorName, selectedTime) {
+function loadMentorCalendarPage(mentorName) {
   console.log("loadMentorCalendarPage function works");
   const getDateData = new Date();
   const getHourMins = getDateData.getHours() + ":" + getDateData.getMinutes();
   const dateTomorrow = Date.today()
     .addDays(1)
     .toString("dddd MMMM dS, yyyy");
-  console.log(dateTomorrow);
-  console.log(selectedTime);
   const threeHourPlusTomorrow = Date.today()
     .at(getHourMins)
     .addHours(3)
@@ -377,24 +372,24 @@ function loadMentorCalendarPage(mentorName, selectedTime) {
   );
 }
 
-function watchSelectTimeButton(mentorName, dateTomorrow, selectedTime) {
+function watchSelectTimeButton(mentorName) {
   $(".select-time-option-button").click(e => {
-    e.preventDefault();
     console.log("watchSelectTimeButton function works!");
-    console.log(mentorName);
-    console.log(dateTomorrow);
+    e.preventDefault();
+    let selectedTime = $(".ei_Title").on("click", function() {
+      return this.val();
+    });
     console.log(selectedTime);
-    loadMentorFormPage(mentorName, dateTomorrow);
-    watchSubmitFormResponseButton(mentorName, dateTomorrow);
+    console.log(mentorName);
+    loadMentorFormPage(mentorName);
+    watchSubmitFormResponseButton(mentorName);
   });
 }
 
 //#4 MENTOR QUESTIONAIRE FORM PAGE
-function loadMentorFormPage(mentorName, dateTomorrow, selectedTime) {
+function loadMentorFormPage(mentorName) {
   console.log("loadMentorFormPage function works");
   console.log(mentorName);
-  console.log(dateTomorrow);
-  console.log(selectedTime);
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
@@ -455,22 +450,23 @@ function loadMentorFormPage(mentorName, dateTomorrow, selectedTime) {
     `
   );
 }
-function watchSubmitFormResponseButton(mentorName, dateTomorrow) {
+function watchSubmitFormResponseButton(mentorName) {
   $("#submit-form-response-button").click(e => {
     e.preventDefault();
-    const selectedTime = $("ei_Title").val();
     console.log(mentorName);
-    console.log(dateTomorrow);
     console.log("watchSubmitFormResponseButton function works!");
-    loadConfirmationPage(mentorName, dateTomorrow, selectedTime);
+    loadConfirmationPage(mentorName);
   });
 }
 //#5 CONFIRMATION PAGE
-function loadConfirmationPage(mentorName, dateTomorrow, selectedTime) {
+function loadConfirmationPage(mentorName, selectedTime) {
   console.log("loadConfirmationPage function works");
   console.log(mentorName);
-  console.log(dateTomorrow);
   console.log(selectedTime);
+  const dateTomorrow = Date.today()
+    .addDays(1)
+    .toString("dddd MMMM dS, yyyy");
+  console.log(dateTomorrow);
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
