@@ -373,16 +373,15 @@ function loadMentorCalendarPage(mentorName) {
 }
 
 function watchSelectTimeButton(mentorName) {
-  $(".select-time-option-button").click(e => {
+  $(".select-time-option-button").click(function(e) {
     console.log("watchSelectTimeButton function works!");
     e.preventDefault();
-    let selectedTime = $(".ei_Title").on("click", function() {
-      return this.val();
-    });
+    const selectedTimeData = $(this).find(".ei_Title");
+    const selectedTime = selectedTimeData.text();
     console.log(selectedTime);
     console.log(mentorName);
     loadMentorFormPage(mentorName);
-    watchSubmitFormResponseButton(mentorName);
+    watchSubmitFormResponseButton(mentorName, selectedTime);
   });
 }
 
@@ -450,12 +449,13 @@ function loadMentorFormPage(mentorName) {
     `
   );
 }
-function watchSubmitFormResponseButton(mentorName) {
+function watchSubmitFormResponseButton(mentorName, selectedTime) {
   $("#submit-form-response-button").click(e => {
     e.preventDefault();
     console.log(mentorName);
+    console.log(selectedTime);
     console.log("watchSubmitFormResponseButton function works!");
-    loadConfirmationPage(mentorName);
+    loadConfirmationPage(mentorName, selectedTime);
   });
 }
 //#5 CONFIRMATION PAGE
