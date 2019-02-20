@@ -42,16 +42,17 @@ section {
   min-height: 200px;
   padding: 6% 0;
   /* background-color: #bbb; */
-  background: -moz-linear-gradient(-45deg, #faf9f9 0%, #f3f6f7 100%);
-  background: -webkit-linear-gradient(-45deg, #faf9f9 0%, #f3f6f7 100%);
-  background: linear-gradient(135deg, #faf9f9 0%, #f3f6f7 100%);
+  background: -moz-linear-gradient(-45deg, #0de588 0%, #60d1f7 100%);
+  background: -webkit-linear-gradient(-45deg, #0de588 0%, #60d1f7 100%);
+  background: linear-gradient(135deg, #0de588 0%, #60d1f7 100%);
+  opacity: 0.9;
 }
 
 section:nth-child(even) {
   /* background-color: #ddd; */
-  background: -moz-linear-gradient(-45deg, #0de588 0%, #60d1f7 100%);
-  background: -webkit-linear-gradient(-45deg, #0de588 0%, #60d1f7 100%);
-  background: linear-gradient(135deg, #0de588 0%, #60d1f7 100%);
+  background: -moz-linear-gradient(-45deg, #faf9f9 0%, #f3f6f7 100%);
+  background: -webkit-linear-gradient(-45deg, #faf9f9 0%, #f3f6f7 100%);
+  background: linear-gradient(135deg, #faf9f9 0%, #f3f6f7 100%);
 }
 
 /* Bootstrap Theme Default */
@@ -84,19 +85,34 @@ section:nth-child(even) {
   margin-bottom: 0.33em;
 }
 .progressBarContainer {
-  width: 100%;
-  height: 8px;
+  width: 50%;
+  height: 15px;
   background: #e1e1e1;
   overflow: hidden;
+  margin: 0 auto;
 }
 .progressBarValue {
-  height: 8px;
+  height: 15px;
   float: left;
   background: #e55d87; /* Old browsers */
   background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
   background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
   background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+  transition: 1s linear;
+  transition-property: width, background-color;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.1);
 }
+
+@keyframes expandWidth {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: auto;
+  }
+}
+
 .value-00 {
   width: 0;
 }
@@ -134,7 +150,22 @@ section:nth-child(even) {
 /* #1 Landing Page */
 
 .landing-page-banner-img {
-  width: 80%;
+  width: 100%;
+  height: 75%;
+  background-image: url("https://images.unsplash.com/photo-1496902526517-c0f2cb8fdb6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 15px;
+}
+
+.landing-page-banner-img:hover {
+  opacity: 0.95;
+}
+.header-text-box {
+  font-weight: bold;
+  color: whitesmoke;
 }
 
 header {
