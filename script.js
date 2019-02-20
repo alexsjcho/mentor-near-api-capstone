@@ -3,7 +3,6 @@
 //#1 MENTORNEAR LANDING PAGE
 $(document).ready(function() {
   watchFindMentorButton();
-  loadMentorNearLandingPage();
   menuItemListener();
 });
 function menuItemListener() {
@@ -22,13 +21,6 @@ function menuItemListener() {
         }
       );
     return false;
-  });
-}
-
-function loadMentorNearLandingPage() {
-  $("#return-home-page").on("click", function() {
-    console.log("loadMentorNearLandingPage function works!");
-    $("html").load("index.html");
   });
 }
 
