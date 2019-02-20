@@ -2,53 +2,19 @@
   <a class="navbar-brand" href="#">MentorNear</a>
 </nav>
 
-<header role="banner">
-  <h1>#2 Mentor Profile Slider</h1>
-  <section role="section-instruction" class="row">
-    <div class="col-md-4 container">
-      <h3>Instructions</h3>
-      <p>
-        Select a professional as your mentor
-      </p>
-    </div>
-  </section>
-</header>
-
 <!-- Random Quote Generator -->
 <section role="motivational-quotes" id="random-quote-generator-api-section">
   <h2>Random Quote Generator</h2>
-  <p></p>
 </section>
 
 <!-- Random Profile Generator API Generated HTML Elements -->
-<h2>Random Profile Generator</h2>
+<h2>Choose A Mentor</h2>
 <section
   role="mentor-profile-slider"
   id="random-profile-generator-api-section"
 ></section>
 
-<div>
-  <a
-    class="btn btn-success btn-lg"
-    href="#"
-    role="load-mentor-calendar-page"
-    id="choose-mentor-button"
-  >
-    Choose This Mentor
-  </a>
-</div>
-<div>
-  <a
-    class="btn btn-primary btn-sm"
-    href="#"
-    role="load-mentor-calendar-page"
-    id="next-mentor-profile-button"
-  >
-    Next Mentor
-  </a>
-</div>
-
-<footer class="row">
+<footer class="row bg-dark">
   <p class="col-md-4">&copy; Alex Cho 2019</p>
   <p class="col-md-1">
     <a href="https://www.linkedin.com/in/alexsjcho/"
@@ -65,48 +31,3 @@
     <p class="col-md-1"><i class="fas fa-blog"></i></p>
   </a>
 </footer>
-
-<!-- Random Name Generator ResponseJson jQuery Rendered HTML -->
-
-<div data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active text-center">
-      <img
-        id="mentor-profile-img"
-        src="${mentorDataJson.results[0].picture.large}"
-        alt="mentor-profile-picture-placeholder"
-        height="400"
-        width="400"
-      />
-      <div class="container" id="mentor-profile-info">
-        <h2 id="mentor-name">
-          ${mentorDataJson.results[0].name.first} ${
-          mentorDataJson.results[0].name.last }
-        </h2>
-        <div id="mentor-description">
-          <p>
-            ${mentorDataJson.results[0].email}
-          </p>
-          <p>
-            ${mentorDataJson.results[0].cell}
-          </p>
-          <p>
-            ${mentorDataJson.results[0].location.timezone.offset}
-          </p>
-          <p>
-            ${mentorDataJson.results[0].location.timezone.description}
-          </p>
-          <p>
-            ${mentorDataJson.results[0].dob.age}
-          </p>
-          <p>
-            ${mentorDataJson.results[0].location.city}
-          </p>
-          <p>
-            ${mentorDataJson.results[0].location.state}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

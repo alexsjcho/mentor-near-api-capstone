@@ -46,67 +46,53 @@ function loadMentorProfilePage() {
   <a class="navbar-brand" href="#">MentorNear</a>
 </nav>
 
-<header role="banner">
-  <h1>#2 Mentor Profile Slider</h1>
-  <section role="section-instruction" class="row">
-    <div class="col-md-4 container">
-      <h3>Instructions</h3>
-      <p>
-        Select a professional as your mentor
-      </p>
-    </div>
-  </section>
-</header>
-
 <!-- Random Quote Generator -->
 <section role="motivational-quotes" id="random-quote-generator-api-section">
   <h2>Random Quote Generator</h2>
 </section>
 
+
 <!-- Random Profile Generator API Generated HTML Elements -->
-<h2>Random Profile Generator API</h2>
-<section role="mentor-profile-slider" id="random-profile-generator-api-section">
-</section>
+<section
+  role="mentor-profile-slider"
+  id="random-profile-generator-api-section"
+></section>
 
+<div id = "mentor-buttons-container">
+<a
+class="btn btn-primary btn-large"
+href="#"
+role="load-mentor-calendar-page"
+id="next-mentor-profile-button"
+>
+Next Mentor
+</a>
+<a
+class="btn btn-success btn-large"
+href="#"
+role="load-mentor-calendar-page"
+id="choose-mentor-button"
+>
+Choose This Mentor
+</a>
+</div>
 
-<div>
-        <a
-          class="btn btn-success btn-lg"
-          href="#"
-          role="load-mentor-calendar-page"
-          id="choose-mentor-button"
-        >
-          Choose This Mentor
-        </a>
-      </div>
-      <div>
-        <a
-          class="btn btn-primary btn-sm"
-          href="#"
-          role="load-mentor-calendar-page"
-          id="next-mentor-profile-button"
-        >
-          Next Mentor
-        </a>
-      </div>
-
-<footer class="row">
-  <p class="col-md-4">&copy; Alex Cho 2019</p>
-  <p class="col-md-1">
-    <a href="https://www.linkedin.com/in/alexsjcho/"
-      ><i class="fab fa-linkedin"></i
-    ></a>
-  </p>
-  <a href="https://github.com/alexsjcho">
-    <p class="col-md-1"><i class="fab fa-github"></i></p>
-  </a>
-  <a href="https://www.mraddoil.com/">
-    <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-  </a>
-  <a href="https://www.alexsjcho.com/">
-    <p class="col-md-1"><i class="fas fa-blog"></i></p>
-  </a>
+<footer class="row bg-dark">
+<p class="col-md-3">&copy; Alex Cho 2019</p>
+<a href="https://www.linkedin.com/in/alexsjcho/">
+  <p class="col-md-1"><i class="fab fa-linkedin"></i></p
+></a>
+<a href="https://github.com/alexsjcho">
+  <p class="col-md-1"><i class="fab fa-github"></i></p
+></a>
+<a href="https://www.mraddoil.com/">
+  <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p
+></a>
+<a href="https://www.alexsjcho.com/">
+  <p class="col-md-1"><i class="fas fa-blog"></i></p
+></a>
 </footer>
+
     `
   );
 }
@@ -173,8 +159,9 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
   $("#random-profile-generator-api-section").empty();
   $("#random-profile-generator-api-section").append(
     `
-    <div data-ride="carousel">
-    <div class="carousel-inner">
+    <h2>Choose A Mentor</h2>
+    <div class="text-center" id = "mentor-profile-container">
+    <div class="carousel-inner text-center">
       <div class="carousel-item active text-center">
         <img
           id="mentor-profile-img"
@@ -183,11 +170,11 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
           height="250"
           width="250"
         />
-        <div class="container" id="mentor-profile-info">
+        <div class="container text-center" id="mentor-profile-info">
             <h2 id="mentor-name"> 
          ${fullName}
             </h2>
-          <div id="mentor-description">
+          <div  class="container text-center" id="mentor-description">
           <p>
           Age: ${mentorDataJson.results[0].dob.age}
          </p>
@@ -246,8 +233,19 @@ const displayRandomQuote = randomQuoteGeneratorApiData => {
   $("#random-quote-generator-api-section").empty();
   $("#random-quote-generator-api-section").append(
     `
-    <h2> Random Quote Generator API </h2>
-      <p>${randomQuoteText}</p>
+    <h6>
+    <span class="typcn typcn-ticket icon"></span> You Are That Much
+    Closer To Getting Mentorship
+  </h6>
+    <div class="progressBar">
+    <div class="progressBarContainer">
+      <div class="progressBarValue value-40">40%</div>
+    </div>
+  
+    </div>
+
+    <h2> Today's Word of Inspiration </h2>
+      <p id = "random-quote-text">${randomQuoteText}</p>
     
       `
   );
@@ -300,20 +298,21 @@ function loadMentorCalendarPage(mentorName) {
     </button>
   </nav>
 
-  <header role="banner">
-    <h1>#3 Find Time on Mentor's Calendar</h1>
-    <section role="section-instruction" class="row">
-      <div class="col-md-4 container">
-        <h3>Instructions</h3>
-        <p>
-          Select a time on your mentor's calendar
-        </p>
-      </div>
-    </section>
-  </header>
+  <section>
+  <h6>
+  <span class="typcn typcn-ticket icon"></span> You Are That Much
+  Closer To Getting Mentorship
+</h6>
+  <div class="progressBar">
+  <div class="progressBarContainer">
+    <div class="progressBarValue value-60">60%</div>
+  </div>
+
+  </div>
+  </section>
 
   <section role="find time on mentor's calendar">
-    <div class="calendar dark">
+    <div class="calendar">
       <div class="calendar_header">
         <h1 class="header_title">${mentorName}</h1>
         <p class="header_copy">Let's Meet For 30 Minutes</p>
@@ -350,23 +349,22 @@ function loadMentorCalendarPage(mentorName) {
       </div>
     </div>
   </section>
-  <footer class="row">
-    <p class="col-md-4">&copy; Alex Cho 2019</p>
-    <p class="col-md-1">
-      <a href="https://www.linkedin.com/in/alexsjcho/"
-        ><i class="fab fa-linkedin"></i
-      ></a>
-    </p>
-    <a href="https://github.com/alexsjcho">
-      <p class="col-md-1"><i class="fab fa-github"></i></p>
-    </a>
-    <a href="https://www.mraddoil.com/">
-      <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-    </a>
-    <a href="https://www.alexsjcho.com/">ow 
-      <p class="col-md-1"><i class="fas fa-blog"></i></p>
-    </a>
-  </footer>
+  
+  <footer class="row bg-dark">
+  <p class="col-md-3">&copy; Alex Cho 2019</p>
+  <a href="https://www.linkedin.com/in/alexsjcho/">
+    <p class="col-md-1"><i class="fab fa-linkedin"></i></p
+  ></a>
+  <a href="https://github.com/alexsjcho">
+    <p class="col-md-1"><i class="fab fa-github"></i></p
+  ></a>
+  <a href="https://www.mraddoil.com/">
+    <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p
+  ></a>
+  <a href="https://www.alexsjcho.com/">
+    <p class="col-md-1"><i class="fas fa-blog"></i></p
+  ></a>
+</footer>
 
     `
   );
@@ -397,24 +395,24 @@ function loadMentorFormPage(mentorName) {
   <a class="navbar-brand" href="#">MentorNear</a>
 </nav>
 
-<header role="banner">
-  <h1>#4 Mentor Questionaire</h1>
-  <section role="section-instruction" class="row">
-    <div class="col-md-4 container">
-      <h3>Instructions</h3>
-      <p>
-        Fill out mentor's qualification form
-      </p>
-    </div>
-  </section>
-</header>
-
 <section role="mentor's question">
+<h6>
+    <span class="typcn typcn-ticket icon"></span> You Are That Much
+    Closer To Getting Mentorship
+  </h6>
+<div class="progressBar">
+  <div class="progressBarContainer">
+    <div class="progressBarValue value-80">80%</div>
+  </div>
+  
+  </div>
+
   <div>
   <h2>${mentorName}'s Question</h2>
   <p>What do you want to talk about in our first meeting?</p>
 </div>
 </section>
+
 <section role="fill out mentor's qualification form">
 <form>
   <div class="form-group">
@@ -428,22 +426,22 @@ function loadMentorFormPage(mentorName) {
   <button type="button" class="btn btn-primary"  id="submit-form-response-button">Submit Your Response</button>
   </form>
 </section>
-<footer class="row">
-  <p class="col-md-4">&copy; Alex Cho 2019</p>
-  <p class="col-md-1">
-    <a href="https://www.linkedin.com/in/alexsjcho/"
-      ><i class="fab fa-linkedin"></i
-    ></a>
-  </p>
-  <a href="https://github.com/alexsjcho">
-    <p class="col-md-1"><i class="fab fa-github"></i></p>
-  </a>
-  <a href="https://www.mraddoil.com/">
-    <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-  </a>
-  <a href="https://www.alexsjcho.com/">
-    <p class="col-md-1"><i class="fas fa-blog"></i></p>
-  </a>
+
+
+<footer class="row bg-dark">
+<p class="col-md-3">&copy; Alex Cho 2019</p>
+<a href="https://www.linkedin.com/in/alexsjcho/">
+  <p class="col-md-1"><i class="fab fa-linkedin"></i></p
+></a>
+<a href="https://github.com/alexsjcho">
+  <p class="col-md-1"><i class="fab fa-github"></i></p
+></a>
+<a href="https://www.mraddoil.com/">
+  <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p
+></a>
+<a href="https://www.alexsjcho.com/">
+  <p class="col-md-1"><i class="fas fa-blog"></i></p
+></a>
 </footer>
 
     `
@@ -473,10 +471,16 @@ function loadConfirmationPage(mentorName, selectedTime) {
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <a class="navbar-brand" href="#">MentorNear</a>
 </nav>
-
-<header role="banner">
-
-  <h1>#5 Confirmation Page</h1>
+<section>
+<div class="progressBar">
+  <div class="progressBarContainer">
+    <div class="progressBarValue value-100">100%</div>
+  </div>
+  <h6>
+    <span class="typcn typcn-ticket icon"></span> Congrats! Look Forward To New Breakthroughs!
+  </h6>
+  </div>
+</section>
 
   <section role="section-instruction" class="row">
     <div class="col-md-4 container">
@@ -489,26 +493,22 @@ function loadConfirmationPage(mentorName, selectedTime) {
       </p>
     </div>
   </section>
-  
-</header>
 
-<footer class="row">
-  <p class="col-md-4">&copy; Alex Cho 2019</p>
-  <p class="col-md-1">
-    <a href="https://www.linkedin.com/in/alexsjcho/"
-      ><i class="fab fa-linkedin"></i
-    ></a>
-  </p>
-  <a href="https://github.com/alexsjcho">
-    <p class="col-md-1"><i class="fab fa-github"></i></p>
-  </a>
-  <a href="https://www.mraddoil.com/">
-    <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p>
-  </a>
-  <a href="https://www.alexsjcho.com/">
-    <p class="col-md-1"><i class="fas fa-blog"></i></p>
-  </a>
-</footer>
+  <footer class="row bg-dark">
+        <p class="col-md-3">&copy; Alex Cho 2019</p>
+        <a href="https://www.linkedin.com/in/alexsjcho/">
+          <p class="col-md-1"><i class="fab fa-linkedin"></i></p
+        ></a>
+        <a href="https://github.com/alexsjcho">
+          <p class="col-md-1"><i class="fab fa-github"></i></p
+        ></a>
+        <a href="https://www.mraddoil.com/">
+          <p class="col-md-1"><i class="fab fa-wordpress-simple"></i></p
+        ></a>
+        <a href="https://www.alexsjcho.com/">
+          <p class="col-md-1"><i class="fas fa-blog"></i></p
+        ></a>
+      </footer>
     `
   );
 }
