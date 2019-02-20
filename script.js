@@ -316,7 +316,7 @@ function loadMentorCalendarPage(mentorName) {
     <div class="calendar dark">
       <div class="calendar_header">
         <h1 class="header_title">${mentorName}</h1>
-        <p class="header_copy">Times I'm Free</p>
+        <p class="header_copy">Let's Meet For 30 Minutes</p>
       </div>
       <div class="calendar_plan">
         <div class="cl_plan">
@@ -328,7 +328,7 @@ function loadMentorCalendarPage(mentorName) {
         <div class="event_item">
           <div class="ei_Dot dot_active"></div>
           <div class="ei_Title">${threeHourPlusTomorrow}</div>
-          <div class="ei_Copy">Choose This Mentorship Time Block</div>
+          <div class="ei_Copy">Get Mentored At This Time</div>
         </div>
         </a>
         <div class="calendar_events">
@@ -336,7 +336,7 @@ function loadMentorCalendarPage(mentorName) {
           <div class="event_item">
             <div class="ei_Dot dot_active"></div>
             <div class="ei_Title">${fiveHourPlusTomorrow}</div>
-            <div class="ei_Copy">Choose This Mentorship Time Block</div>
+            <div class="ei_Copy">Get Mentored At This Time</div>
           </div>
           </a>
           <div class="calendar_events">
@@ -344,7 +344,7 @@ function loadMentorCalendarPage(mentorName) {
             <div class="event_item">
               <div class="ei_Dot dot_active"></div>
               <div class="ei_Title">${sevenHourPlusTomorrow}</div>
-              <div class="ei_Copy">Choose This Mentorship Time Block</div>
+              <div class="ei_Copy">Get Mentored At This Time</div>
             </div>
             </a>
       </div>
