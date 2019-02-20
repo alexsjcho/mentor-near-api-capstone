@@ -24,12 +24,13 @@ function menuItemListener() {
   });
 }
 
-function watchFindMentorButton() {
+function watchFindMentorButton(dateTomorrow) {
   $("#find-mentor-start-button").click(e => {
     e.preventDefault();
     console.log("watchFindMentorButton works!");
-    loadMentorProfilePage();
-    watchChooseMentorButton();
+    console.log(dateTomorrow);
+    loadMentorProfilePage(dateTomorrow);
+    watchChooseMentorButton(dateTomorrow);
     randomUserGeneratorApi();
     getRandomQuoteGeneratorApi();
     watchNextMentorProfileButton();
@@ -37,8 +38,9 @@ function watchFindMentorButton() {
 }
 
 //Render jQuery HTML Elements Injections
-function loadMentorProfilePage() {
+function loadMentorProfilePage(dateTomorrow) {
   console.log("loadMentorProfilePage function works");
+  console.log(dateTomorrow);
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
@@ -114,13 +116,14 @@ function loadMentorProfilePage() {
 //#2 MENTOR PROFILE SLIDER PAGE
 
 //Watch Choose Mentor Button
-function watchChooseMentorButton(dateTomorrow) {
+function watchChooseMentorButton(dateTomorrow, selectedTime) {
   $("#choose-mentor-button").click(e => {
     e.preventDefault();
     let mentorName = $("#mentor-name").text();
     console.log("watchChooseMentorButton works!");
-    loadMentorCalendarPage(mentorName, dateTomorrow);
-    watchSelectTimeButton(mentorName, dateTomorrow);
+    console.log(selectedTime);
+    loadMentorCalendarPage(mentorName, dateTomorrow, selectedTime);
+    watchSelectTimeButton(mentorName, dateTomorrow, selectedTime);
   });
 }
 //Watch Button for New Mentor Profile
@@ -263,7 +266,7 @@ function getRandomQuoteGeneratorApi() {
 }
 
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
-function loadMentorCalendarPage(mentorName) {
+function loadMentorCalendarPage(mentorName, selectedTime) {
   console.log("loadMentorCalendarPage function works");
   const getDateData = new Date();
   const getHourMins = getDateData.getHours() + ":" + getDateData.getMinutes();
@@ -271,6 +274,7 @@ function loadMentorCalendarPage(mentorName) {
     .addDays(1)
     .toString("dddd MMMM dS, yyyy");
   console.log(dateTomorrow);
+  console.log(selectedTime);
   const threeHourPlusTomorrow = Date.today()
     .at(getHourMins)
     .addHours(3)
