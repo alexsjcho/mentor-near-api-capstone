@@ -1,11 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
-/* font-family: 'Raleway', sans-serif; */
 @import url("https://fonts.googleapis.com/css?family=Raleway+Dots");
-/* font-family: 'Raleway Dots', cursive; */
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab");
-/* font-family: 'Roboto Slab', serif; */
-
-/* CSS General Style */
 * {
   box-sizing: border-box;
 }
@@ -40,7 +35,6 @@ nav {
 
 section {
   padding: 6% 0;
-  /* background-color: #bbb; */
   background: -moz-linear-gradient(-45deg, #0de58792 0%, #60d1f774 90%);
   background: -webkit-linear-gradient(-45deg, #0de58793 0%, #60d1f772 90%);
   background: linear-gradient(135deg, #0de58792 0%, #60d1f772 90%);
@@ -48,7 +42,6 @@ section {
 }
 
 section:nth-child(even) {
-  /* background-color: #ddd; */
   background: -moz-linear-gradient(-45deg, #faf9f9 0%, #f3f6f7 100%);
   background: -webkit-linear-gradient(-45deg, #faf9f9 0%, #f3f6f7 100%);
   background: linear-gradient(135deg, #faf9f9 0%, #f3f6f7 100%);
