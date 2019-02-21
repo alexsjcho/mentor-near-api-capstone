@@ -1,9 +1,10 @@
-#MentorNear MVP Concept
+###MentorNear MVP Concept
+
 This is an MVP of this start-up concept of Mentorship service similar to a dating app like Tinder, CoffeeMeetsBagel, and shared economy concepts like Lyft and Uber.
 
 However, due to the scope of this project, I was limited to only using 3rd party APIs, so it's not fully what it could be, but it's sufficient to demonstrate the app concept.
 
-#Technologies Used
+###Technologies Used
 
 1. HTML5
 2. CSS3
@@ -11,18 +12,21 @@ However, due to the scope of this project, I was limited to only using 3rd party
 4. Normalize.css
 5. Javascript
 6. jQuery
-7. 3rd Party APIs: Random
+7. 3rd Party APIs: [Random User Generator](https://randomuser.me/), [Random Quotes Generator](https://theysaidso.com/api/#random)
+8. [Dates.js Library](https://github.com/datejs/Datejs)
 
-#Summary
+###Summary
+
 [Link to Live App via GitHub Pages](https://alexsjcho.github.io/mentor-near-api-capstone/)
+
 [MentorNear Product Development Roadmap Spreadsheet ](https://docs.google.com/spreadsheets/d/1o8NDImBFhAAJPpzmy9itxwtU-3iuLET9MkZF2SLoVpA/edit?usp=sharing)
 
-<img src= "/images/#1homepage.png" width ="400" height="400">
+<img src= "images/homepage.png" width ="400" height="400">
 
-<img src= "/images/#2findmentorpage.png" width ="400" height="400">
+<img src= "images/findmentorpage.png" width ="400" height="400">
 
-<img src= "/images/#3mentorcalendarpage.png" width ="400" height="400">
+<img src= "images/mentorcalendarpage.png" width ="400" height="400">
 
-<img src= "/images/#4mentorformpage.png" width ="400" height="400">
+<img src= "images/mentorformpage.png" width ="400" height="400">
 
-<img src= "/images/#5confirmationpage.png" width ="400" height="400">
+<img src= "images/confirmationpage.png" width ="400" height="400">
