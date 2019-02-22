@@ -1,6 +1,6 @@
 "use strict";
 
-//#1 MENTORNEAR LANDING PAGE
+//#1 MENTORNEAR LANDING PAGE -
 $(document).ready(function() {
   watchFindMentorButton();
   menuItemListener();
