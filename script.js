@@ -244,7 +244,7 @@ const displayRandomQuote = randomQuoteGeneratorApiData => {
 };
 
 function getRandomQuoteGeneratorApi() {
-  fetch("http://quotes.rest/qod")
+  fetch("https://quotes.rest/qod")
     .then(checkRandomQuoteGeneratorApiStatus)
     .then(randomQuoteResponseParseJson)
     .then(displayRandomQuote)
