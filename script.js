@@ -1,4 +1,5 @@
 "use strict";
+//Push alexsjcho-github-pages branch
 
 //#1 MENTORNEAR LANDING PAGE
 $(document).ready(function() {
