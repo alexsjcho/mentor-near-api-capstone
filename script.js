@@ -318,7 +318,7 @@ function loadMentorCalendarPage(mentorName) {
       <a href="#" class="select-time-option-button">
         <div class="event_item">
           <div class="ei_Dot dot_active"></div>
-          <div class="ei_Title">${threeHourPlusTomorrow}</div>
+          <div class="ei_Title"  aria-live="assertive">${threeHourPlusTomorrow}</div>
           <div class="ei_Copy">Get Mentored At This Time</div>
         </div>
         </a>
@@ -326,7 +326,7 @@ function loadMentorCalendarPage(mentorName) {
         <a href="#" class="select-time-option-button">
           <div class="event_item">
             <div class="ei_Dot dot_active"></div>
-            <div class="ei_Title">${fiveHourPlusTomorrow}</div>
+            <div class="ei_Title"   aria-live="assertive">${fiveHourPlusTomorrow}</div>
             <div class="ei_Copy">Get Mentored At This Time</div>
           </div>
           </a>
@@ -334,7 +334,7 @@ function loadMentorCalendarPage(mentorName) {
           <a href="#" class="select-time-option-button">
             <div class="event_item">
               <div class="ei_Dot dot_active"></div>
-              <div class="ei_Title">${sevenHourPlusTomorrow}</div>
+              <div class="ei_Title"   aria-live="assertive">${sevenHourPlusTomorrow}</div>
               <div class="ei_Copy">Get Mentored At This Time</div>
             </div>
             </a>
@@ -400,13 +400,14 @@ function loadMentorFormPage(mentorName) {
   </div>
 
   <div>
-  <h2>${mentorName}'s Question</h2>
+  <h2 aria-live="assertive">${mentorName}'s Question</h2>
   <p>What do you want to talk about in our first meeting?</p>
 </div>
 </section>
 
 <section role="fill out mentor's qualification form">
 <form>
+<fieldset>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Write Your Answer</label>
     <textarea
@@ -415,8 +416,9 @@ function loadMentorFormPage(mentorName) {
       rows="3"
     ></textarea>
   </div>
-  <button type="button" class="btn btn-primary"  id="submit-form-response-button">Submit Your Response</button>
+  </fieldset>
   </form>
+  <button type="button" class="btn btn-primary"  id="submit-form-response-button" aria-live="assertive">Submit Your Response</button>
 </section>
 
 

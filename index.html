@@ -42,10 +42,7 @@
   </head>
 
   <body>
-    <main
-      id="new-page-renderer"
-      role="this is the HTML hook to render new page"
-    >
+    <main id="new-page-renderer" role="main-application">
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" id="return-home-page" href="#1">MentorNear</a>
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
@@ -70,9 +67,10 @@
       <header role="banner" class="landing-page-banner-img" id="1">
         <div class="header-text-box">
           <h1>MentorNear</h1>
-          <h4>Find A Mentor. Make Breakthroughs. Get Ahead Faster.</h4>
+          <h2>Find A Mentor. Make Breakthroughs. Get Ahead Faster.</h2>
 
           <button
+            aria-live="assertive"
             class="btn btn-primary btn-lg"
             href="#"
             role="start MentorNear app"
@@ -80,10 +78,10 @@
           >
             <a>Find Mentor Now!</a>
           </button>
-          <h6>
+          <h3>
             <span class="typcn typcn-ticket icon"></span> You Are That Much
             Closer To Getting Mentorship
-          </h6>
+          </h3>
           <div class="progressBar">
             <div class="progressBarContainer">
               <div class="progressBarValue value-20">20%</div>
