@@ -1,11 +1,14 @@
 "use strict";
-//Push alexsjcho-github-pages branch
 
 //#1 MENTORNEAR LANDING PAGE
+
+//Call Initial App Functions on Landing Page
 $(document).ready(function() {
   watchFindMentorButton();
   menuItemListener();
 });
+
+//Navbar Menu Item Event Listeners
 function menuItemListener() {
   $("a.href").bind("click", function(e) {
     e.preventDefault();
@@ -25,10 +28,10 @@ function menuItemListener() {
   });
 }
 
+//Mentor Button Event Listener
 function watchFindMentorButton() {
   $("#find-mentor-start-button").click(e => {
     e.preventDefault();
-    console.log("watchFindMentorButton works!");
     loadMentorProfilePage();
     watchChooseMentorButton();
     randomUserGeneratorApi();
@@ -37,8 +40,8 @@ function watchFindMentorButton() {
   });
 }
 
+//Function to Render Mentor Profile Page via HTML injection
 function loadMentorProfilePage() {
-  console.log("loadMentorProfilePage function works");
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
@@ -99,27 +102,27 @@ Choose This Mentor
 
 //#2 MENTOR PROFILE SLIDER PAGE
 
+//Event Listener for Choose Mentor Button
 function watchChooseMentorButton() {
   $("#choose-mentor-button").click(e => {
     e.preventDefault();
     let mentorName = $("#mentor-name").text();
-    console.log("watchChooseMentorButton works!");
     loadMentorCalendarPage(mentorName);
     watchSelectTimeButton(mentorName);
   });
 }
 
+//Event Listener for Next Mentor Profile Button
 function watchNextMentorProfileButton() {
   $("#next-mentor-profile-button").click(e => {
     e.preventDefault();
-    console.log("watchNextMentorProfileButton works!");
     randomUserGeneratorApi();
     getRandomQuoteGeneratorApi();
   });
 }
 
+//Fetch GET Request on Random User API
 function randomUserGeneratorApi() {
-  console.log("randomUserGeneratorApi function works!");
   fetch("https://randomuser.me/api/?results")
     .then(mentorData => mentorData.json())
     .then(mentorDataJson => displayRandomUserGeneratorResults(mentorDataJson))
@@ -128,8 +131,8 @@ function randomUserGeneratorApi() {
     );
 }
 
+//Capitalize Random User API Response JSON Word Strings
 function captializeLetters(word) {
-  console.log("captializeLetters function works!");
   let wordArray = word.split(" ");
   for (let i = 0; i < wordArray.length; i++) {
     const currWord = wordArray[i];
@@ -138,8 +141,8 @@ function captializeLetters(word) {
   return wordArray.join(" ");
 }
 
+//Display Data From Random User API to the DOM
 function displayRandomUserGeneratorResults(mentorDataJson) {
-  console.log("displayRandomUserGeneratorResults function works!");
   const firstName = mentorDataJson.results[0].name.first;
   const lastName = mentorDataJson.results[0].name.last;
   const mentorPhoto = mentorDataJson.results[0].picture.large;
@@ -199,6 +202,9 @@ function displayRandomUserGeneratorResults(mentorDataJson) {
   );
 }
 
+//RANDOM QUOTE GENERATOR API SECTION
+
+//Check Whether GET Request Works or Return Errors
 const checkRandomQuoteGeneratorApiStatus = randomQuoteResponse => {
   if (randomQuoteResponse.ok) {
     return randomQuoteResponse;
@@ -209,11 +215,13 @@ const checkRandomQuoteGeneratorApiStatus = randomQuoteResponse => {
   }
 };
 
+//Take API Data and Convert It to JSON Format
 const randomQuoteResponseParseJson = randomQuoteResponse => {
   let randomQuoteResponseJson = randomQuoteResponse.json();
   return randomQuoteResponseJson;
 };
 
+//Turn API Data into String Text
 const getRandomQuoteText = randomQuoteData => {
   const {
     quote: { quote }
@@ -221,6 +229,7 @@ const getRandomQuoteText = randomQuoteData => {
   return `${quote}`;
 };
 
+//Render Random Quote Text to the Dom
 const displayRandomQuote = randomQuoteGeneratorApiData => {
   const randomQuoteText = randomQuoteGeneratorApiData.contents.quotes[0].quote;
   $("#random-quote-generator-api-section").empty();
@@ -244,6 +253,7 @@ const displayRandomQuote = randomQuoteGeneratorApiData => {
   );
 };
 
+//Fetch GET Request to Random Quote Generator API
 function getRandomQuoteGeneratorApi() {
   fetch("https://quotes.rest/qod")
     .then(checkRandomQuoteGeneratorApiStatus)
@@ -253,8 +263,9 @@ function getRandomQuoteGeneratorApi() {
 }
 
 //#3 FIND TIME ON MENTORS CALENDAR PAGE
+
+//Render Load Mentor Calendar HTML
 function loadMentorCalendarPage(mentorName) {
-  console.log("loadMentorCalendarPage function works");
   const getDateData = new Date();
   const getHourMins = getDateData.getHours() + ":" + getDateData.getMinutes();
   const dateTomorrow = Date.today()
@@ -362,23 +373,21 @@ function loadMentorCalendarPage(mentorName) {
   );
 }
 
+//Event Listener for Select Mentor Time Links
 function watchSelectTimeButton(mentorName) {
   $(".select-time-option-button").click(function(e) {
-    console.log("watchSelectTimeButton function works!");
     e.preventDefault();
     const selectedTimeData = $(this).find(".ei_Title");
     const selectedTime = selectedTimeData.text();
-    console.log(selectedTime);
-    console.log(mentorName);
     loadMentorFormPage(mentorName);
     watchSubmitFormResponseButton(mentorName, selectedTime);
   });
 }
 
 //#4 MENTOR QUESTIONAIRE FORM PAGE
+
+//Render Mentor Question Form HTML
 function loadMentorFormPage(mentorName) {
-  console.log("loadMentorFormPage function works");
-  console.log(mentorName);
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
@@ -441,24 +450,21 @@ function loadMentorFormPage(mentorName) {
     `
   );
 }
+
+//Event Listener for Mentor Form Butoon
 function watchSubmitFormResponseButton(mentorName, selectedTime) {
   $("#submit-form-response-button").click(e => {
     e.preventDefault();
-    console.log(mentorName);
-    console.log(selectedTime);
-    console.log("watchSubmitFormResponseButton function works!");
     loadConfirmationPage(mentorName, selectedTime);
   });
 }
 //#5 CONFIRMATION PAGE
+
+//Render Confirmation Page HTML
 function loadConfirmationPage(mentorName, selectedTime) {
-  console.log("loadConfirmationPage function works");
-  console.log(mentorName);
-  console.log(selectedTime);
   const dateTomorrow = Date.today()
     .addDays(1)
     .toString("dddd MMMM dS, yyyy");
-  console.log(dateTomorrow);
   $("#new-page-renderer").empty();
   $("#new-page-renderer").append(
     `
